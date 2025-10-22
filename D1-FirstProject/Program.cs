@@ -191,7 +191,7 @@
 
         HEAP
         REFERANCE TYPE (Adres Tipli)
-        Datayı doğrudan üzerinde taşımaz.Bir adres vasıtasıyla dayaua erişim yapar
+        Datayı doğrudan üzerinde taşımaz.Bir adres vasıtasıyla dataya erişim yapar
         string , class , interface , delegate , array,
         Heap geniş bir bellek alanı sağlar ancak stack'a göre daha yavaş çalışırlar
 
@@ -213,7 +213,10 @@
         text1 += "akin";
         string text2 = "Fatih";
         Console.WriteLine(Object.ReferenceEquals(text1, text2)); // String immutable 
-                                                                 //  StringBuilder string value type yapida calistirmasini sagliyor daha performansli
+       // string ile oluşturulan bir metin değiştirilemez.
+
+//Değişiklik yapılmak istendiğinde, yeni bir string nesnesi oluşturulur.
+        //  StringBuilder string value type yapida calistirmasini sagliyor daha performansli
 
 
         #endregion
@@ -224,7 +227,7 @@
         Object deger2 = "2";
         deger1 = "2";
         deger1 = true;
-        //Entepede object var int vs object turunden turemistir. Bu yuzden tum değer tiplerini pbject atayabilirsin.
+        //Entepede object var int vs object turunden turemistir. Bu yuzden tum değer tiplerini object atayabilirsin.
         //Tip guvenli sikintisi var
 
         //Boxing : Ilkel veri tipini object atama
@@ -281,7 +284,7 @@
 
     }
 }
-}
+
 
 
 

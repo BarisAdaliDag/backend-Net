@@ -3,90 +3,84 @@
     private static void Main(string[] args)
     {
         #region List
-
-        List<int> sayilar = new List<int>() { 10,20,5};
-        sayilar.Add(1);
-        sayilar.Add(2);
+        List<int> sayilar = new List<int>() { 10, 20, 5 };
+        sayilar.Add(7);
+        sayilar.Add(12);
         sayilar.Remove(5);
-        sayilar.Remove(1);
-        Console.WriteLine(sayilar);
-        sayilar.Insert(1, 200000000);
-        sayilar.Sort();//Arryden turemis index
+        sayilar.RemoveAt(1);
+        sayilar.Insert(2, 5);
 
+        //Dataları okumak.
+        Console.WriteLine(sayilar[1]);
 
-        //Datalari okumak
-        Console.WriteLine(sayilar[2]);
-
-        for(int i = 0; sayilar.Count > i; i++)
+        Console.WriteLine("\nFor Döngüsü\n");
+        for (int i = 0; i < sayilar.Count; i++)
         {
             Console.WriteLine(sayilar[i]);
         }
 
-        Console.WriteLine("for each");
-
-        foreach(var item in sayilar)
+        Console.WriteLine("\nForeach Döngüsü\n");
+        foreach (var item in sayilar)
         {
             Console.WriteLine(item);
         }
-        sayilar.ForEach(item => Console.WriteLine(item));
 
+        Console.WriteLine("\nForeach Döngüsü 2\n");
+        sayilar.ForEach(x => Console.WriteLine(x));
+        #endregion
 
+        #region Tupple
+        var person = (Id: 1, Name: "Fatih", IsActive: true);
+        Console.WriteLine(person.Name);
 
         #endregion
-        #region Tuple
 
-
-        var person = (Id: 1, Name: "Fatih", IsActive: true);
+        #region Example
         string ad, sinif;
         int not;
         bool dogruMu;
 
-        List<(string Ad,string Sinif,int Not)> ogrencilier = new List<(string Ad, string Sinif, int Not)>();
+        List<(string Ad, string Sinif, int Not)> ogrenciler = new List<(string Ad, string Sinif, int No)>();
 
-        //ogrenci Bilgeri kullanicidan alma
-
+        //Öğrenci bilgilerini kullanıcıdan alma
         for (int i = 0; i < 3; i++)
         {
-            Console.WriteLine($" Ogrenci Bilgileri giriniz {i+1}");
-            Console.Write("Adi:");
+            Console.WriteLine($"\nÖğrenci {i + 1} bilgilerini girininiz.");
+
+            Console.Write("Adı: ");
             ad = Console.ReadLine();
 
-            Console.Write("Sinif");
+            Console.Write("Sınıfı: ");
             sinif = Console.ReadLine();
 
             do
             {
-                Console.Write("Notu:");
+                Console.Write("Notu: ");
                 dogruMu = int.TryParse(Console.ReadLine(), out not);
-                Console.WriteLine(dogruMu ? $"Giris bilgileri basarili" : "Basarisiz");
-
+                Console.WriteLine(dogruMu ? "Giriş işlemleri başarılı" : "Hatalı not girişi!");
             } while (!dogruMu);
-            ogrencilier.Add((ad, sinif, not));
 
-
+            ogrenciler.Add((ad, sinif, not));
         }
-       
 
-        //Tum ogrenci listele
-        Console.WriteLine("Ogrenci Bilgileri");
-        foreach (var ogrenci in ogrencilier)
+        //Tüm öğrencileri listele
+        Console.WriteLine("\nÖğrenci Bilgileri");
+        foreach (var ogrenci in ogrenciler)
         {
-            Console.WriteLine($"Ad: {ogrenci.Ad} , sinif {ogrenci.Sinif} ,not {ogrenci.Not} ");
+            Console.WriteLine($"Öğrenci Ad: {ogrenci.Ad}, Sınıf: {ogrenci.Sinif}, Not: {ogrenci.Not}");
         }
 
-        //Notleri kucukten buyuge siralama
-        var siraliNorlar = ogrencilier.OrderBy(o => o.Not);
-        Console.WriteLine(" Notlar Kucukten buyuge siralama");
-
-        foreach (var ogrenci in ogrencilier)
+        //Notları küçükten büyüğe sıralam
+        var siraliNotlar = ogrenciler.OrderBy(o => o.Not);
+        Console.WriteLine("\nNotlar küçükten büyüğe sıralanmış");
+        foreach (var item in siraliNotlar)
         {
-            Console.WriteLine($"Ad: {ogrenci.Ad} , sinif {ogrenci.Sinif} ,not {ogrenci.Not} ");
+            Console.WriteLine($"Öğrenci Ad: {item.Ad}, Sınıf: {item.Sinif}, Not: {item.Not}");
         }
 
-        //en yukse knotu bulma
-        var enYuksekNot= ogrencilier.OrderByDescending(o => o.Not).FirstOrDefault();//[0] olurdu
-      //  Console.WriteLine("En yuksek notu alan ogrenci "+enYuksekNot.Ad + "  " , +enYuksekNot.Sinif+ " " + enYuksekNot.Not);
-
+        //En Yüksek notu bulma
+        var enYuksekNot = ogrenciler.OrderByDescending(o => o.Not).FirstOrDefault();
+        Console.WriteLine($"\nEn yüksek not alan öğrenci adı: {enYuksekNot.Ad} sınıf: {enYuksekNot.Sinif} not: {enYuksekNot.Not}");
 
 
         #endregion
