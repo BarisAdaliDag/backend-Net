@@ -55,9 +55,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "25-OOP Inheritance Lab", "2
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "26-OOP Abstraction", "26-OOP Abstraction\26-OOP Abstraction.csproj", "{8C53DE7E-17D1-468E-9D33-775E9F3756B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "27-OOP AbstractionLab", "27-OOP AbstractionLab\27-OOP AbstractionLab.csproj", "{8D40CB89-9F59-4174-8D59-766B3D0A483A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "27-OOP AbstractionLab", "27-OOP AbstractionLab\27-OOP AbstractionLab.csproj", "{8D40CB89-9F59-4174-8D59-766B3D0A483A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "28-OOP Interface", "28-interface\28-OOP Interface.csproj", "{13B4586E-43C8-4200-9020-08F29CB70588}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "28-OOP Interface", "28-OOP Interface\28-OOP Interface.csproj", "{4F4CCC57-7AF6-4B7A-BF9C-692DCE75E76D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "29-OOP InterfaceLab", "29-OOP InterfaceLab\29-OOP InterfaceLab.csproj", "{A8FFD399-C477-46ED-A846-30BFDC4EE804}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -173,10 +175,14 @@ Global
 		{8D40CB89-9F59-4174-8D59-766B3D0A483A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D40CB89-9F59-4174-8D59-766B3D0A483A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D40CB89-9F59-4174-8D59-766B3D0A483A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13B4586E-43C8-4200-9020-08F29CB70588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13B4586E-43C8-4200-9020-08F29CB70588}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13B4586E-43C8-4200-9020-08F29CB70588}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13B4586E-43C8-4200-9020-08F29CB70588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F4CCC57-7AF6-4B7A-BF9C-692DCE75E76D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4CCC57-7AF6-4B7A-BF9C-692DCE75E76D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4CCC57-7AF6-4B7A-BF9C-692DCE75E76D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4CCC57-7AF6-4B7A-BF9C-692DCE75E76D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8FFD399-C477-46ED-A846-30BFDC4EE804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8FFD399-C477-46ED-A846-30BFDC4EE804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8FFD399-C477-46ED-A846-30BFDC4EE804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8FFD399-C477-46ED-A846-30BFDC4EE804}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
