@@ -21,6 +21,11 @@ benzer alanlari kaldirma alt shift ş
 Abstract ile interface metotlar kalıtım aldığında chıld kullanmak zorunda
 Abstract Classı genelde BaseClass oluşumunda kulla kullanıyoruz
 Interface gevşek bağlantı  loose coupling alkanfatih.com
+
+day 2-4
+crud operasyonu interface hata durumlari on hazirlik yap
+using dispose otomatik yapiyor/
+
  */
 
 //Alt enter
