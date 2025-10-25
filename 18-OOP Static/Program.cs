@@ -4,43 +4,42 @@
     {
         static void Main(string[] args)
         {
-            //static
-           // Console asd = Console() DEMIYORUZ
-           //Classlari doğrudan kullanmak isteyebilirsin
+            //Static, bir sınıfın, metodun, alanın veya üyenin yalnızca bir örneği olduğunu belirtmek için kullanılan özel bir anahtar kelimedir. Kısaca static nesnenin değil direk sınıfın yani şablonun bir parçasıdır.
 
-            
-            // Static , bir sınıfın ,methodun , alanın veya üyenın yanlızca bir örneği
-            // olduğu belirtmek için kullanılan özel bir anahtar kelimedir
+            double alan = MathHelper.CalculateCircleArea(15);
+            Console.WriteLine(alan);
 
-            //kisace statoc nesnenindegil 
-            Console.WriteLine("Hello, World!");
-            //Ornek.Deger = 20;
-          //  Console.WriteLine(Ornek.Deger);
+            string original = "Hello";
+            string encrypted = EncryptionHelper.Encrypt(original);
 
-            Console.WriteLine(MathHelper.CalculateCircleArea(15));
+            Console.WriteLine("Original: " + original);
+            Console.WriteLine("Encrypted: " + encrypted);
+            Console.WriteLine("Decrypted: " + EncryptionHelper.Decrypt(encrypted));
 
-            User user1 = new User() { Id = 1,Name = "Baris"};
-            Console.WriteLine("Total users " + User.TotalUsersId);
-            User user2 = new User() { Id = 2, Name = "Adali" };
+            User user1 = new User() { Id = 1, Name = "Fatih" };
+            Console.WriteLine(user1.Id);
+            Console.WriteLine("Total User: " + User.TotalUsers);
 
-            Console.WriteLine("Total users "+ User.TotalUsersId);
+            User user2 = new User();
+            Console.WriteLine(user2.Id);
+            Console.WriteLine("Total User: " + User.TotalUsers);
 
+
+            Console.WriteLine(Ornek.dege1);
+            Console.WriteLine(Ornek.dege2);
+
+        }
+
+        public static class Ornek
+        {
+            public static int dege1;
+            public static int dege2 = 10;
+            static Ornek()
+            {
+                dege1 = 10;
+                Console.WriteLine("Static const çalıştı");
+            }
         }
     }
-
-    public class Ornek
-    {
-        public string Deneme { get; set; }
-        public static int Deger = 10;
-        public static void Yazdir()
-        {
-            Console.WriteLine("Bu bir statik method");
-        }
-        public void DenemeInfo()
-        {
-            Console.WriteLine("Bu bir normal method");
-        }
-    }
-
-
 }
+

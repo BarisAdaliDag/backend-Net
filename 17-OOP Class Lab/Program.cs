@@ -4,51 +4,66 @@
     {
         static void Main(string[] args)
         {
-            Student student1 = new Student(1,"Fatih","Akin") {Department = "Bilgisayar Muhendisligi" };
-            //student1.ExtraScores.Add(100);
-            //student1.ExtraScores.Add(50);
-            student1.AddExamScore(100);
+            Student student1 = new Student(101, "Fatih", "Alkan") { Department = "Bilgisayar Mühendisliği" };
             student1.AddExamScore(80);
+            student1.AddExamScore(90);
             student1.AddExamScore(75);
-         
+
             Console.WriteLine(student1.DisplayInfo());
-            Console.WriteLine(student1.GetexamScores());
+            Console.WriteLine("***********************************************");
+            //2.SORU
 
-            Product product1 = new Product( 100, "Cikolata");
-            Product product2 = new Product(100, "Cikolata");
-            if(product1 == product2)
-            {
-                Console.WriteLine("Ayni");
-            }
-            else
-            {
-                Console.WriteLine("farkli");
-            }
-
-            var p1 = new Product(price: 2333, name: "diz ustu pc");
-            var p2 = new Product(price: 1323, name: "masa ustu pc","Elektronik");
-            var p3 = new Product(price: 200, name: "klavye", "Elektronik");
+            var p1 = new Product(name:"Dizüstü PC",  45000);
+            var p2 = new Product("Masaüstü PC", 45000, "Elektronik");
+            var p3 = new Product("Klavye", 2500, "Elektronik");
 
             var order = new Order(101);
             order.AddProduct(p1);
-            order.AddProduct(p2);
             order.AddProduct(p3);
+
+            var order2 = new Order(102);
+            order2.AddProduct(p1);
+            order2.AddProduct(p3);
+
+            List<Product> order3 = new List<Product>();
+            order3.Add(p1);
+            order3.Add(p3);
+
             Console.WriteLine(order.DisplayOrderSummary());
+            Console.WriteLine(order.GetFormattedTotal());
+            Console.WriteLine(order.GetMostExpensiveProduct().Name);
 
-            //Siparis toplamini para formatinda donduren
-            List<Product> products = new List<Product>() { p1,p2,p3,};
-          
-            Console.WriteLine(ProductExtensions.ChangeNumberToMoney(products) );
+            Console.WriteLine("****** Order Orjinal *****");
+            foreach (var item in order.Products)
+            {
+                Console.WriteLine(item.Price);
+            }
 
-            //siparis listesindeki en pahali urunu bulun
-            Console.WriteLine(ProductExtensions.MostExpensiveItem(products));
+            order.ApplyDiscount(20);
+            Console.WriteLine("****** Order Indirim *****");
+            foreach (var item in order.Products)
+            {
+                Console.WriteLine(item.Price);
+            }
 
-            //Belirli bir oranda indirim uygulayan metoto.(%10,%20)
+            Console.WriteLine("****** Order 2 *****");
+            foreach (var item in order2.Products)
+            {
+                Console.WriteLine(item.Price);
+            }
+
+            Console.WriteLine("****** Product *****");
+            foreach (var item in order3)
+            {
+                Console.WriteLine(item.Price);
+            }
 
 
+            //Console.WriteLine(order.ApplyDiscount(20));
 
-            Console.ReadLine();
-
+            //Sipariş toplamını para formatında döndüren.
+            //Siperiş listesindeki en pahalı ürünü bulun.
+            //Belirli bir oradnda indirim uygulayan metot. (%10, %20)
         }
     }
 }

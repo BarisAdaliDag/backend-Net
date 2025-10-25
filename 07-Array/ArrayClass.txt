@@ -1,0 +1,116 @@
+﻿C#'ta Array sınıfının en çok kullanılan özellik ve metodlarını örneklerle veriyorum: 
+
+Temel Özellikler 
+
+int[] sayilar = { 1, 2, 3, 4, 5 }; 
+ 
+// Length - Dizinin eleman sayısı 
+Console.WriteLine(sayilar.Length); // 5 
+ 
+// Rank - Dizinin boyut sayısı 
+Console.WriteLine(sayilar.Rank); // 1 (tek boyutlu) 
+ 
+// GetLength(dimension) - Belirtilen boyuttaki eleman sayısı 
+Console.WriteLine(sayilar.GetLength(0)); // 5 
+ 
+
+Sıralama ve Arama 
+
+int[] sayilar = { 5, 2, 8, 1, 9 }; 
+ 
+// Sort - Diziyi sıralar 
+Array.Sort(sayilar); // { 1, 2, 5, 8, 9 } 
+ 
+// Reverse - Diziyi ters çevirir 
+Array.Reverse(sayilar); // { 9, 8, 5, 2, 1 } 
+ 
+// IndexOf - Elemanın indeksini bulur 
+int index = Array.IndexOf(sayilar, 5); // 2 
+ 
+// BinarySearch - İkili arama (dizi sıralı olmalı) 
+Array.Sort(sayilar); 
+int bulunan = Array.BinarySearch(sayilar, 5); // indeksi döner 
+ 
+// Exists - Koşula uyan eleman var mı? 
+bool varMi = Array.Exists(sayilar, x => x > 7); // true 
+ 
+// Find - Koşula uyan ilk elemanı bulur 
+int ilk = Array.Find(sayilar, x => x > 5); // 8 
+ 
+// FindAll - Koşula uyan tüm elemanları bulur 
+int[] buyukler = Array.FindAll(sayilar, x => x > 5); // { 8, 9 } 
+ 
+
+Kopyalama ve Doldurma 
+
+// Copy - Dizi kopyalama 
+int[] kaynak = { 1, 2, 3, 4, 5 }; 
+int[] hedef = new int[5]; 
+Array.Copy(kaynak, hedef, 5); 
+ 
+// Clone - Dizi klonlama 
+int[] klon = (int[])kaynak.Clone(); 
+ 
+// Fill - Diziyi belirli bir değerle doldurur (.NET 6+) 
+int[] dizi = new int[5]; 
+Array.Fill(dizi, 10); // { 10, 10, 10, 10, 10 } 
+ 
+// Clear - Elemanları sıfırlar/temizler 
+Array.Clear(sayilar, 0, sayilar.Length); 
+ 
+// Resize - Dizi boyutunu değiştirir 
+Array.Resize(ref kaynak, 10); 
+ 
+
+Dönüştürme ve Filtreleme 
+
+int[] sayilar = { 1, 2, 3, 4, 5 }; 
+ 
+// ConvertAll - Her elemanı dönüştürür 
+string[] metinler = Array.ConvertAll(sayilar, x => x.ToString()); 
+ 
+// ForEach - Her eleman için işlem yapar 
+Array.ForEach(sayilar, x => Console.WriteLine(x)); 
+ 
+// TrueForAll - Tüm elemanlar koşulu sağlıyor mu? 
+bool hepsiPositif = Array.TrueForAll(sayilar, x => x > 0); // true 
+ 
+
+Çok Boyutlu Diziler 
+
+// CreateInstance - Dinamik dizi oluşturma 
+Array matris = Array.CreateInstance(typeof(int), 3, 3); 
+ 
+// GetValue / SetValue - Eleman okuma/yazma 
+matris.SetValue(42, 1, 1); 
+int deger = (int)matris.GetValue(1, 1); 
+ 
+// Standart çok boyutlu dizi 
+int[,] tablo = new int[3, 3]; 
+Console.WriteLine(tablo.GetLength(0)); // 3 (satır sayısı) 
+Console.WriteLine(tablo.GetLength(1)); // 3 (sütun sayısı) 
+ 
+
+Pratik Örnekler 
+
+// Örnek 1: Diziyi sıralayıp en büyük 3 elemanı bulma 
+int[] notlar = { 75, 82, 90, 68, 95, 88 }; 
+Array.Sort(notlar); 
+Array.Reverse(notlar); 
+Console.WriteLine($"En yüksek notlar: {notlar[0]}, {notlar[1]}, {notlar[2]}"); 
+ 
+// Örnek 2: Belirli koşula uyan elemanları filtreleme 
+int[] yaşlar = { 15, 22, 30, 17, 45, 19 }; 
+int[] yetişkinler = Array.FindAll(yaşlar, y => y >= 18); 
+ 
+// Örnek 3: İki diziyi birleştirme 
+int[] dizi1 = { 1, 2, 3 }; 
+int[] dizi2 = { 4, 5, 6 }; 
+int[] birlesik = new int[dizi1.Length + dizi2.Length]; 
+Array.Copy(dizi1, 0, birlesik, 0, dizi1.Length); 
+Array.Copy(dizi2, 0, birlesik, dizi1.Length, dizi2.Length); 
+ 
+
+Bu metodlar en sık kullanılanlar. Modern C#'ta LINQ metodları da (Where, Select, OrderBy gibi) çok kullanılır, ancak bunlar Array sınıfına özgü değil, IEnumerable arayüzüne ait. 
+
+ 

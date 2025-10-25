@@ -1,0 +1,27 @@
+﻿partial anahtar kelimesi, bir sınıfın tanımını birden fazla dosyaya bölmenize olanak tanır.
+Temel Kullanım:
+csharp// Person.cs
+public partial class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+// Person.Methods.cs
+public partial class Person
+{
+    public void SayHello()
+    {
+        Console.WriteLine($"Merhaba, ben {Name}");
+    }
+}
+
+// Person.Validation.cs
+public partial class Person
+{
+    public bool IsAdult()
+    {
+        return Age >= 18;
+    }
+}
+Derleyici bunları tek bir sınıf olarak birleştirir!

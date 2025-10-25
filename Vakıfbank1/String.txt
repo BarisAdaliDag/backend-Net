@@ -1,0 +1,146 @@
+﻿C#'ta `string` sınıfının en çok kullanılan özellikleri:
+
+## Temel Özellikler
+
+```csharp
+string metin = "Merhaba Dünya";
+
+// Length - Uzunluk
+Console.WriteLine(metin.Length); // 13
+
+// İndeksle erişim
+char ilkHarf = metin[0]; // 'M'
+```
+
+## Büyük/Küçük Harf
+
+```csharp
+string metin = "Merhaba";
+
+metin.ToUpper();      // "MERHABA"
+metin.ToLower();      // "merhaba"
+metin.ToUpperInvariant(); // Kültür bağımsız
+```
+
+## Arama
+
+```csharp
+string metin = "Merhaba Dünya";
+
+metin.Contains("Dünya");        // true
+metin.StartsWith("Mer");        // true
+metin.EndsWith("nya");          // true
+metin.IndexOf("aba");           // 4
+metin.LastIndexOf("a");         // 11
+```
+
+## Alt String
+
+```csharp
+string metin = "Merhaba Dünya";
+
+metin.Substring(0, 7);          // "Merhaba"
+metin.Substring(8);             // "Dünya"
+```
+
+## Değiştirme
+
+```csharp
+string metin = "Merhaba Dünya";
+
+metin.Replace("Dünya", "Dünyası"); // "Merhaba Dünyası"
+metin.Remove(7);                    // "Merhaba"
+metin.Insert(7, " Güzel");          // "Merhaba Güzel Dünya"
+```
+
+## Boşluk Temizleme
+
+```csharp
+string metin = "  Merhaba  ";
+
+metin.Trim();       // "Merhaba"
+metin.TrimStart();  // "Merhaba  "
+metin.TrimEnd();    // "  Merhaba"
+```
+
+## Bölme ve Birleştirme
+
+```csharp
+string metin = "Ali,Ayşe,Mehmet";
+
+// Split - Bölme
+string[] isimler = metin.Split(','); // ["Ali", "Ayşe", "Mehmet"]
+
+// Join - Birleştirme
+string birlesik = string.Join(" - ", isimler); // "Ali - Ayşe - Mehmet"
+```
+
+## Boş Kontrol
+
+```csharp
+string metin = "";
+
+string.IsNullOrEmpty(metin);      // true
+string.IsNullOrWhiteSpace(metin); // true
+```
+
+## Format ve İnterpolasyon
+
+```csharp
+string isim = "Ali";
+int yas = 25;
+
+// String interpolation (en çok kullanılan)
+string mesaj = $"Benim adım {isim}, yaşım {yas}";
+
+// Format
+string mesaj2 = string.Format("Adım {0}, yaşım {1}", isim, yas);
+```
+
+## Karşılaştırma
+
+```csharp
+string metin1 = "Merhaba";
+string metin2 = "merhaba";
+
+metin1.Equals(metin2);                                    // false
+metin1.Equals(metin2, StringComparison.OrdinalIgnoreCase); // true
+string.Compare(metin1, metin2);                           // -1, 0, veya 1
+```
+
+## Padding
+
+```csharp
+string sayi = "42";
+
+sayi.PadLeft(5, '0');   // "00042"
+sayi.PadRight(5, '0');  // "42000"
+```
+
+## Pratik Örnekler
+
+```csharp
+// Email kontrolü
+string email = "test@example.com";
+bool gecerli = email.Contains("@") && email.Contains(".");
+
+// Dosya uzantısı alma
+string dosya = "resim.jpg";
+string uzanti = dosya.Substring(dosya.LastIndexOf('.'));
+
+// Çok satırlı string
+string html = @"
+<div>
+    <h1>Başlık</h1>
+</div>";
+
+// StringBuilder (çok değişiklik için)
+StringBuilder sb = new StringBuilder();
+for (int i = 0; i < 1000; i++)
+{
+    sb.Append(i); // String + yerine StringBuilder kullan
+}
+string sonuc = sb.ToString();
+```
+
+**Önemli:** String immutable'dır (değiştirilemez). Her işlem yeni string oluşturur. Çok fazla değişiklik için `StringBuilder` kullanın.

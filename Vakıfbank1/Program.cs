@@ -29,3 +29,117 @@ using dispose otomatik yapiyor/
  */
 
 //Alt enter
+
+
+
+
+
+/// <summary>
+/// N Sayıda değişkeni toplayan metot.
+/// </summary>
+/// <param name="sayilar">Birden fazla sayı girişi</param>
+/// <returns>Sayıların toplam değeri</returns>
+public static int Topla(params int[] sayilar)
+{
+    int toplam = 0;
+    foreach (var item in sayilar)
+    {
+        toplam += item;
+    }
+    return toplam;
+}
+
+/// <summary>
+/// Bölme işlemini gerçekleştirir.
+/// </summary>
+/// <param name="bolunen">Bölünecek sayı</param>
+/// <param name="bolen">Bölen sayı</param>
+/// <param name="kalan">Kalan sayı</param>
+/// <returns>Sonuç</returns>
+public static double Bolme(double bolunen, double bolen, out double kalan)
+{
+    kalan = bolunen % bolen;
+    return bolunen / bolen;
+}
+
+public static void DegeriDegistir(ref int x)
+{
+    x = x + 10;
+}
+
+        #region BestPracties
+        /*Adlandırma Kuralları
+         * 1-Anlamlı isimler: CalculateTotalPrice
+         * 2-Fiil Kullanımı: GetCustomer, SaveFile, SendEmail gibi
+         * 3-CamelCase ve PascalCase: C# dilinde metot isimleri genellikle PascalCase kullanılır. SendNatification()
+         *Tek Sorumluluk Prensibi (Signle Responsibility)
+         *Metotlar Kısa ve Öz Olmalıdır. (20 satırdan uzun olamamlıdır.)
+         *Paramtere Sayısını Minimize Edin.
+         *Dökümantasyon ve Yorum Satırları
+         *DRY (Don't Repeat Yourself) Kendi edini tekrar etme.
+         */
+
+using System.Collections;
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+
+
+        //TYPE CHECKING
+
+        object item = 5;
+        Console.WriteLine(item.GetType()); // Çıktı: System.Int32
+        Type t = typeof(int);
+        Console.WriteLine(t); // Çıktı: System.Int32
+
+
+        object item = 42;
+
+        if (item.GetType() == typeof(int))
+            Console.WriteLine("Tam olarak int tipi.");
+        else if (item is string)
+            Console.WriteLine("String veya alt tipi.");
+        else
+            Console.WriteLine("Farklı bir tip.");
+
+        // TYPE CASTING
+        ArrayList list = new ArrayList() { 10, "merhaba", 5 };
+
+        foreach (var item in list)
+        {
+            if (item.GetType() == typeof(int))
+            {
+                int sonuc = (int)item * 2;
+                Console.WriteLine(sonuc); // Çıktı: 20 ve 10
+            }
+        }
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+}
+

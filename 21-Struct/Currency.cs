@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace _21_Struct
 {
-    internal class Currency
+    public struct Currency
     {
-        public Currency(decimal amaount, string symbol)
+        public Currency(decimal amount, string symbol = "₺")
         {
-            Amaount = amaount;
+            Amount = amount;
             Symbol = symbol;
         }
 
-        public decimal Amaount { get; set; }
+        public decimal Amount { get; set; }
         public string Symbol { get; set; }
 
         public string GetCurrency()
         {
-            if (Symbol == "$")
-                return $"{Amaount:F2}{Symbol}";
-
+            if (Symbol == "₺")
+                return $"{Amount:F2}{Symbol}";
+            else
+                return $"{Symbol}{Amount:F2}";
         }
 
     }

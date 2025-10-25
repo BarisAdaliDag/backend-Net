@@ -1,4 +1,6 @@
-﻿namespace _22_Enum
+﻿using _22_OOP_Enum;
+
+namespace _22_Enum
 {
     internal class Program
     {

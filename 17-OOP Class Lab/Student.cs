@@ -13,7 +13,7 @@ namespace _17_OOP_Class_Lab
 		private string _lastName;
 		private string _firstName;
 		private String _department;
-		private List<int> _examScores;
+		private ICollection<int> _examScores;
 
 		//Constractor
 		//ctor tab tab 

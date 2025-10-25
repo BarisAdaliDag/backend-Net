@@ -1,0 +1,217 @@
+﻿C#'ta `List<T>` sınıfının en çok kullanılan özellik ve metodlarını örneklerle veriyorum:
+
+## Temel Özellikler
+
+```csharp
+List<int> sayilar = new List<int>();
+
+// Count - Liste eleman sayısı
+Console.WriteLine(sayilar.Count); // 0
+
+// Capacity - Listenin kapasitesi
+Console.WriteLine(sayilar.Capacity); // 0 (başlangıçta)
+
+// İndeksle erişim
+sayilar.Add(10);
+int ilk = sayilar[0]; // 10
+```
+
+## Eleman Ekleme
+
+```csharp
+List<string> isimler = new List<string>();
+
+// Add - Sona eleman ekler
+isimler.Add("Ali");
+isimler.Add("Ayşe");
+
+// AddRange - Birden fazla eleman ekler
+isimler.AddRange(new[] { "Mehmet", "Fatma" });
+
+// Insert - Belirli indekse ekler
+isimler.Insert(0, "Zeynep"); // Başa ekler
+
+// InsertRange - Belirli indekse birden fazla ekler
+isimler.InsertRange(1, new[] { "Ahmet", "Elif" });
+```
+
+## Eleman Silme
+
+```csharp
+List<int> sayilar = new List<int> { 1, 2, 3, 4, 5, 3 };
+
+// Remove - İlk eşleşen elemanı siler
+sayilar.Remove(3); // { 1, 2, 4, 5, 3 }
+
+// RemoveAt - Belirli indeksteki elemanı siler
+sayilar.RemoveAt(0); // İlk elemanı siler
+
+// RemoveAll - Koşula uyan tüm elemanları siler
+sayilar.RemoveAll(x => x > 3); // 3'ten büyükleri siler
+
+// RemoveRange - Belirli aralıktaki elemanları siler
+sayilar.RemoveRange(0, 2); // İlk 2 elemanı siler
+
+// Clear - Tüm elemanları temizler
+sayilar.Clear();
+```
+
+## Arama ve Kontrol
+
+```csharp
+List<int> sayilar = new List<int> { 5, 2, 8, 1, 9, 3 };
+
+// Contains - Eleman var mı?
+bool varMi = sayilar.Contains(8); // true
+
+// IndexOf - Elemanın ilk indeksi
+int index = sayilar.IndexOf(8); // 2
+
+// LastIndexOf - Elemanın son indeksi
+int sonIndex = sayilar.LastIndexOf(3);
+
+// Find - Koşula uyan ilk eleman
+int ilk = sayilar.Find(x => x > 5); // 8
+
+// FindAll - Koşula uyan tüm elemanlar
+List<int> buyukler = sayilar.FindAll(x => x > 5); // { 8, 9 }
+
+// FindIndex - Koşula uyan ilk elemanın indeksi
+int idx = sayilar.FindIndex(x => x > 5); // 2
+
+// FindLast - Koşula uyan son eleman
+int son = sayilar.FindLast(x => x > 5); // 9
+
+// Exists - Koşula uyan eleman var mı?
+bool var = sayilar.Exists(x => x > 10); // false
+
+// TrueForAll - Tüm elemanlar koşulu sağlıyor mu?
+bool hepsi = sayilar.TrueForAll(x => x > 0); // true
+```
+
+## Sıralama ve Tersine Çevirme
+
+```csharp
+List<int> sayilar = new List<int> { 5, 2, 8, 1, 9 };
+
+// Sort - Listeyi sıralar
+sayilar.Sort(); // { 1, 2, 5, 8, 9 }
+
+// Sort (custom) - Özel sıralama
+sayilar.Sort((a, b) => b.CompareTo(a)); // Azalan sıralama
+
+// Reverse - Listeyi ters çevirir
+sayilar.Reverse(); // { 9, 8, 5, 2, 1 }
+
+// BinarySearch - İkili arama (liste sıralı olmalı)
+sayilar.Sort();
+int bulunan = sayilar.BinarySearch(5);
+```
+
+## Dönüştürme ve Kopyalama
+
+```csharp
+List<int> sayilar = new List<int> { 1, 2, 3, 4, 5 };
+
+// ToArray - Diziye dönüştürme
+int[] dizi = sayilar.ToArray();
+
+// ConvertAll - Her elemanı dönüştürme
+List<string> metinler = sayilar.ConvertAll(x => x.ToString());
+
+// GetRange - Belirli aralığı alma
+List<int> aralik = sayilar.GetRange(1, 3); // İndeks 1'den 3 eleman
+
+// CopyTo - Diziye kopyalama
+int[] hedef = new int[10];
+sayilar.CopyTo(hedef, 2); // İndeks 2'den itibaren kopyalar
+```
+
+## Döngüler ve İşlemler
+
+```csharp
+List<int> sayilar = new List<int> { 1, 2, 3, 4, 5 };
+
+// ForEach - Her eleman için işlem
+sayilar.ForEach(x => Console.WriteLine(x));
+
+// For döngüsü
+for (int i = 0; i < sayilar.Count; i++)
+{
+    Console.WriteLine(sayilar[i]);
+}
+
+// Foreach döngüsü
+foreach (int sayi in sayilar)
+{
+    Console.WriteLine(sayi);
+}
+```
+
+## Pratik Örnekler
+
+```csharp
+// Örnek 1: Öğrenci yönetimi
+List<string> ogrenciler = new List<string> 
+{ 
+    "Ali", "Ayşe", "Mehmet" 
+};
+
+ogrenciler.Add("Fatma");
+ogrenciler.Remove("Ali");
+Console.WriteLine($"Öğrenci sayısı: {ogrenciler.Count}");
+
+// Örnek 2: Sayıları filtreleme
+List<int> notlar = new List<int> { 45, 78, 92, 55, 88, 63 };
+List<int> gecenler = notlar.FindAll(n => n >= 50);
+notlar.Sort();
+notlar.Reverse(); // En yüksekten en düşüğe
+
+// Örnek 3: Liste birleştirme
+List<int> liste1 = new List<int> { 1, 2, 3 };
+List<int> liste2 = new List<int> { 4, 5, 6 };
+liste1.AddRange(liste2); // { 1, 2, 3, 4, 5, 6 }
+
+// Örnek 4: Tekrar eden elemanları temizleme
+List<int> tekrarlar = new List<int> { 1, 2, 2, 3, 3, 3, 4 };
+List<int> benzersiz = tekrarlar.Distinct().ToList();
+
+// Örnek 5: Koşullu silme
+List<int> sayilar2 = new List<int> { 1, 2, 3, 4, 5, 6 };
+sayilar2.RemoveAll(x => x % 2 == 0); // Çift sayıları sil
+```
+
+## LINQ ile Kullanım
+
+```csharp
+List<int> sayilar = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+// Where - Filtreleme
+var ciftler = sayilar.Where(x => x % 2 == 0).ToList();
+
+// Select - Dönüştürme
+var kareler = sayilar.Select(x => x * x).ToList();
+
+// OrderBy / OrderByDescending - Sıralama
+var sirali = sayilar.OrderByDescending(x => x).ToList();
+
+// Any - En az bir eleman koşulu sağlıyor mu?
+bool varMi = sayilar.Any(x => x > 5); // true
+
+// All - Tüm elemanlar koşulu sağlıyor mu?
+bool hepsi = sayilar.All(x => x > 0); // true
+
+// First / FirstOrDefault - İlk eleman
+int ilk = sayilar.First(x => x > 5); // 6
+
+// Sum, Average, Min, Max
+int toplam = sayilar.Sum();
+double ortalama = sayilar.Average();
+int min = sayilar.Min();
+int max = sayilar.Max();
+
+// Take / Skip
+var ilk3 = sayilar.Take(3).ToList(); // İlk 3 eleman
+var atla2 = sayilar.Skip(2).ToList(); // İlk 2'yi atla
+```
+

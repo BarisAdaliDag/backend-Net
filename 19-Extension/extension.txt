@@ -1,0 +1,209 @@
+﻿## C# Extension Methods (Genişletme Metodları)
+
+Extension methods, **mevcut bir sınıfa kaynak kodunu değiştirmeden yeni metodlar eklemenizi** sağlar.
+
+## Temel Sözdizimi:
+
+```csharp
+public static class StringExtensions  // Static class olmalı
+{
+    // İlk parametre "this" ile başlar
+    public static bool IsValidEmail(this string str)
+    {
+        return str.Contains("@") && str.Contains(".");
+    }
+}
+
+// Kullanım:
+string email = "test@example.com";
+bool isValid = email.IsValidEmail();  // Sanki string'in kendi metodu gibi!
+```
+
+## Nasıl Çalışır?
+
+**3 Kural:**
+1. **Static class** içinde olmalı
+2. **Static method** olmalı
+3. İlk parametre **`this`** anahtar kelimesiyle başlamalı
+
+```csharp
+public static class MyExtensions
+{
+    //          ↓ Bu sınıfı genişletiyoruz
+    public static ReturnType MethodName(this TypeToExtend obj, parameters)
+    {
+        // Implementation
+    }
+}
+```
+
+## Pratik Örnekler:
+
+### 1. String Genişletme
+```csharp
+public static class StringExtensions
+{
+    public static string Capitalize(this string str)
+    {
+        if (string.IsNullOrEmpty(str)) return str;
+        return char.ToUpper(str[0]) + str.Substring(1).ToLower();
+    }
+    
+    public static int WordCount(this string str)
+    {
+        return str.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+    }
+}
+
+// Kullanım:
+string name = "ahmet";
+Console.WriteLine(name.Capitalize());  // "Ahmet"
+
+string sentence = "Merhaba dünya nasılsın";
+Console.WriteLine(sentence.WordCount());  // 3
+```
+
+### 2. Int Genişletme
+```csharp
+public static class IntExtensions
+{
+    public static bool IsEven(this int number)
+    {
+        return number % 2 == 0;
+    }
+    
+    public static bool IsPrime(this int number)
+    {
+        if (number < 2) return false;
+        for (int i = 2; i <= Math.Sqrt(number); i++)
+        {
+            if (number % i == 0) return false;
+        }
+        return true;
+    }
+}
+
+// Kullanım:
+int num = 17;
+Console.WriteLine(num.IsEven());   // false
+Console.WriteLine(num.IsPrime());  // true
+```
+
+### 3. List Genişletme
+```csharp
+public static class ListExtensions
+{
+    public static void Print<T>(this List<T> list)
+    {
+        foreach (var item in list)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    
+    public static List<T> Shuffle<T>(this List<T> list)
+    {
+        Random rng = new Random();
+        return list.OrderBy(x => rng.Next()).ToList();
+    }
+}
+
+// Kullanım:
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+numbers.Print();
+var shuffled = numbers.Shuffle();
+```
+
+### 4. DateTime Genişletme
+```csharp
+public static class DateTimeExtensions
+{
+    public static bool IsWeekend(this DateTime date)
+    {
+        return date.DayOfWeek == DayOfWeek.Saturday || 
+               date.DayOfWeek == DayOfWeek.Sunday;
+    }
+    
+    public static int Age(this DateTime birthDate)
+    {
+        var today = DateTime.Today;
+        var age = today.Year - birthDate.Year;
+        if (birthDate.Date > today.AddYears(-age)) age--;
+        return age;
+    }
+}
+
+// Kullanım:
+DateTime today = DateTime.Now;
+Console.WriteLine(today.IsWeekend());  // true/false
+
+DateTime birthDate = new DateTime(1990, 5, 15);
+Console.WriteLine(birthDate.Age());  // Yaş hesaplar
+```
+
+## LINQ = Extension Methods!
+
+LINQ metodları aslında extension metodlardır:
+
+```csharp
+List<int> numbers = new List<int> { 1, 2, 3, 4, 5 };
+
+// Bunlar extension metodlar:
+var evens = numbers.Where(x => x % 2 == 0);
+var doubled = numbers.Select(x => x * 2);
+var sum = numbers.Sum();
+```
+
+## Önemli Notlar:
+
+**✅ Avantajlar:**
+- Kütüphane sınıflarını genişletebilirsiniz (string, int, DateTime)
+- Kod daha okunabilir olur
+- Existing code'u bozmadan yeni özellik eklersiniz
+
+**⚠️ Dikkat Edilmesi Gerekenler:**
+- Sınıfın kendi metodu varsa, o önceliklidir
+- Extension method onu override edemez
+- Sadece public üyelere erişebilir (private'lara erişemez)
+- Overuse yapmayın, gereksiz yere extension eklemeyin
+
+**❌ Yapılamayan:**
+```csharp
+public static class BadExtensions
+{
+    // Private field'lara erişemez
+    public static void AccessPrivate(this MyClass obj)
+    {
+        // obj.privateField = 5;  ❌ HATA!
+    }
+}
+```
+
+## Gerçek Hayat Kullanımı:
+
+```csharp
+// Validation extensions
+public static class ValidationExtensions
+{
+    public static bool IsNullOrEmpty(this string str) => string.IsNullOrEmpty(str);
+    public static bool IsValidTCKN(this string tckn) => tckn?.Length == 11;
+}
+
+// Collection extensions
+public static class CollectionExtensions
+{
+    public static bool IsNullOrEmpty<T>(this IEnumerable<T> collection)
+    {
+        return collection == null || !collection.Any();
+    }
+}
+
+// Kullanım:
+string name = GetName();
+if (name.IsNullOrEmpty())
+{
+    Console.WriteLine("İsim girilmedi");
+}
+```
+
+**Özet:** Extension methods ile mevcut tiplere kendi metodlarınızı ekleyebilirsiniz. Kodunuzu daha temiz ve okunabilir yapar!

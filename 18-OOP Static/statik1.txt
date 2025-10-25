@@ -1,0 +1,127 @@
+﻿## C# Static Nedir?
+
+`static` anahtar kelimesi, bir üyenin **sınıfa ait** olduğunu belirtir, **nesneye ait değil**.
+
+## Temel Fark:
+
+```csharp
+public class Person
+{
+    public string Name;              // Normal - her nesneye ait
+    public static int TotalCount;    // Static - sınıfa ait
+}
+
+// Kullanım:
+Person p1 = new Person();
+p1.Name = "Ali";              // Nesne üzerinden
+Person.TotalCount = 5;        // Sınıf üzerinden (new yok!)
+```
+
+## Static Üyeler:
+
+### 1. Static Field (Alan)
+```csharp
+public class Counter
+{
+    public static int Count = 0;  // Tüm nesneler için tek bir değer
+    
+    public Counter()
+    {
+        Count++;  // Her nesne oluşturulduğunda artar
+    }
+}
+
+Counter c1 = new Counter();  // Count = 1
+Counter c2 = new Counter();  // Count = 2
+Counter c3 = new Counter();  // Count = 3
+```
+
+### 2. Static Method (Metod)
+```csharp
+public class Calculator
+{
+    public static int Add(int a, int b)
+    {
+        return a + b;
+    }
+}
+
+// Nesne oluşturmadan kullanılır:
+int result = Calculator.Add(5, 3);  // 8
+```
+
+### 3. Static Class (Sınıf)
+```csharp
+public static class MathHelper
+{
+    public static double Pi = 3.14;
+    
+    public static double Square(double x)
+    {
+        return x * x;
+    }
+}
+
+// Nesne oluşturulamaz:
+// MathHelper helper = new MathHelper();  ❌ HATA!
+
+// Doğrudan kullanılır:
+double area = MathHelper.Pi * MathHelper.Square(5);  ✅
+```
+
+## Önemli Kurallar:
+
+**✅ Static metod:**
+- Sadece static üyelere erişebilir
+- `this` kullanamaz (çünkü nesne yok)
+
+```csharp
+public class Example
+{
+    public int normalField = 10;
+    public static int staticField = 20;
+    
+    public static void StaticMethod()
+    {
+        Console.WriteLine(staticField);      // ✅ OK
+        Console.WriteLine(normalField);      // ❌ HATA!
+        Console.WriteLine(this.normalField); // ❌ HATA! (this yok)
+    }
+}
+```
+
+**✅ Normal metod:**
+- Hem static hem normal üyelere erişebilir
+
+```csharp
+public void NormalMethod()
+{
+    Console.WriteLine(normalField);   // ✅ OK
+    Console.WriteLine(staticField);   // ✅ OK
+}
+```
+
+## Gerçek Hayat Örnekleri:
+
+```csharp
+// .NET'te sık kullanılan static sınıflar:
+Console.WriteLine("Merhaba");           // Console static
+Math.Sqrt(16);                          // Math static
+DateTime.Now;                           // DateTime.Now static property
+File.ReadAllText("dosya.txt");         // File static
+```
+
+## Ne Zaman Kullanılır?
+
+**Static Kullan:**
+- Utility/helper metodlar (matematiksel işlemler, dönüşümler)
+- Sabitler ve paylaşılan veriler
+- Factory metodlar
+- Nesneye özgü olmayan işlemler
+
+**Static Kullanma:**
+- Nesneye özel durum tutman gerekiyorsa
+- Inheritance kullanacaksan (static metodlar override edilemez)
+- Unit test yazmak zorsa (static'ler mock'lanamaz)
+
+**Özet:** Static = sınıfın kendisine ait, tüm nesneler için paylaşılır, nesne oluşturmadan kullanılır!

@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace _19_Extension
 {
-    public static class ExcaptionExtensions
+    public static class ExceptionExtensions
     {
-        public static string GetFriendMessage()
+        public static string GetFriendlyMessage(this Exception ex)
         {
-            return "";
+            return $"Error {ex.Message}\nDate: {DateTime.Now}";
         }
-
     }
 }

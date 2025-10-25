@@ -1,0 +1,348 @@
+﻿## C# Enum Nedir?
+
+`enum` (enumeration), **sabit değerler kümesi** tanımlamanıza olanak tanır. İlişkili sabitler grubu oluşturur.
+
+## Temel Kullanım:
+
+```csharp
+public enum Days
+{
+    Monday,      // 0
+    Tuesday,     // 1
+    Wednesday,   // 2
+    Thursday,    // 3
+    Friday,      // 4
+    Saturday,    // 5
+    Sunday       // 6
+}
+
+// Kullanım:
+Days today = Days.Monday;
+Console.WriteLine(today);        // "Monday"
+Console.WriteLine((int)today);   // 0
+```
+
+## Neden Enum Kullanılır?
+
+**❌ Enum Olmadan (Kötü):**
+```csharp
+int orderStatus = 1;  // 1 ne demek? Kim hatırlayacak?
+
+if (orderStatus == 1) { }  // Magic number!
+```
+
+**✅ Enum ile (İyi):**
+```csharp
+public enum OrderStatus
+{
+    Pending,
+    Processing,
+    Shipped,
+    Delivered,
+    Cancelled
+}
+
+OrderStatus status = OrderStatus.Shipped;
+
+if (status == OrderStatus.Shipped)
+{
+    Console.WriteLine("Sipariş yolda!");
+}
+```
+
+## Özel Değerler Atama:
+
+```csharp
+public enum ErrorCodes
+{
+    Success = 0,
+    NotFound = 404,
+    Unauthorized = 401,
+    ServerError = 500
+}
+
+ErrorCodes error = ErrorCodes.NotFound;
+Console.WriteLine((int)error);  // 404
+```
+
+## Gerçek Hayat Örnekleri:
+
+### 1. Sipariş Durumu
+```csharp
+public enum OrderStatus
+{
+    Pending = 0,
+    Confirmed = 1,
+    Preparing = 2,
+    Shipped = 3,
+    Delivered = 4,
+    Cancelled = 5
+}
+
+public class Order
+{
+    public int Id { get; set; }
+    public OrderStatus Status { get; set; }
+    
+    public void UpdateStatus(OrderStatus newStatus)
+    {
+        Status = newStatus;
+        
+        switch (Status)
+        {
+            case OrderStatus.Pending:
+                Console.WriteLine("Sipariş beklemede");
+                break;
+            case OrderStatus.Shipped:
+                Console.WriteLine("Sipariş kargoya verildi");
+                break;
+            case OrderStatus.Delivered:
+                Console.WriteLine("Sipariş teslim edildi");
+                break;
+        }
+    }
+}
+```
+
+### 2. Haftanın Günleri
+```csharp
+public enum DayOfWeek
+{
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6,
+    Sunday = 7
+}
+
+DayOfWeek today = DayOfWeek.Friday;
+
+if (today == DayOfWeek.Saturday || today == DayOfWeek.Sunday)
+{
+    Console.WriteLine("Hafta sonu!");
+}
+```
+
+### 3. Kullanıcı Rolleri
+```csharp
+public enum UserRole
+{
+    Guest = 0,
+    User = 1,
+    Moderator = 2,
+    Admin = 3,
+    SuperAdmin = 4
+}
+
+public class User
+{
+    public string Name { get; set; }
+    public UserRole Role { get; set; }
+    
+    public bool CanDeletePost()
+    {
+        return Role >= UserRole.Moderator;
+    }
+}
+```
+
+### 4. Dosya İzinleri
+```csharp
+public enum FileAccess
+{
+    Read = 1,
+    Write = 2,
+    Execute = 4,
+    Delete = 8
+}
+
+// Birden fazla izin için bitwise operations
+FileAccess permission = FileAccess.Read | FileAccess.Write;
+
+if ((permission & FileAccess.Write) == FileAccess.Write)
+{
+    Console.WriteLine("Yazma izni var");
+}
+```
+
+## Enum Metodları:
+
+```csharp
+public enum Color
+{
+    Red,
+    Green,
+    Blue
+}
+
+// Enum → String
+Color color = Color.Red;
+string name = color.ToString();  // "Red"
+
+// String → Enum
+Color parsed = (Color)Enum.Parse(typeof(Color), "Green");
+
+// TryParse (Güvenli)
+if (Enum.TryParse("Blue", out Color result))
+{
+    Console.WriteLine(result);  // Blue
+}
+
+// Tüm değerleri al
+foreach (Color c in Enum.GetValues(typeof(Color)))
+{
+    Console.WriteLine(c);  // Red, Green, Blue
+}
+
+// Enum'da var mı?
+bool exists = Enum.IsDefined(typeof(Color), "Red");  // true
+```
+
+## Flags Enum (Bitwise):
+
+Birden fazla değer aynı anda kullanılabilir:
+
+```csharp
+[Flags]
+public enum Permissions
+{
+    None = 0,
+    Read = 1,        // 0001
+    Write = 2,       // 0010
+    Delete = 4,      // 0100
+    Execute = 8      // 1000
+}
+
+// Birden fazla izin
+Permissions userPerms = Permissions.Read | Permissions.Write;
+
+// İzin kontrolü
+if (userPerms.HasFlag(Permissions.Write))
+{
+    Console.WriteLine("Yazma izni var");
+}
+
+// İzin ekleme
+userPerms |= Permissions.Delete;
+
+// İzin kaldırma
+userPerms &= ~Permissions.Write;
+
+Console.WriteLine(userPerms);  // "Read, Delete"
+```
+
+## Switch ile Kullanım:
+
+```csharp
+public enum PaymentMethod
+{
+    Cash,
+    CreditCard,
+    BankTransfer,
+    Crypto
+}
+
+public void ProcessPayment(PaymentMethod method, decimal amount)
+{
+    switch (method)
+    {
+        case PaymentMethod.Cash:
+            Console.WriteLine($"Nakit ödeme: {amount} TL");
+            break;
+        case PaymentMethod.CreditCard:
+            Console.WriteLine($"Kredi kartı ile ödeme: {amount} TL");
+            break;
+        case PaymentMethod.BankTransfer:
+            Console.WriteLine($"Banka havalesi: {amount} TL");
+            break;
+        case PaymentMethod.Crypto:
+            Console.WriteLine($"Kripto para ile ödeme: {amount} TL");
+            break;
+        default:
+            throw new ArgumentException("Geçersiz ödeme yöntemi");
+    }
+}
+```
+
+## Enum Tipi Değiştirme:
+
+Varsayılan olarak `int`, ama değiştirebilirsiniz:
+
+```csharp
+public enum SmallEnum : byte  // byte, short, int, long olabilir
+{
+    Value1 = 1,
+    Value2 = 2,
+    Value3 = 3
+}
+```
+
+## Extension Method ile Enum:
+
+```csharp
+public enum Status
+{
+    Active,
+    Inactive,
+    Pending
+}
+
+public static class StatusExtensions
+{
+    public static string GetDescription(this Status status)
+    {
+        return status switch
+        {
+            Status.Active => "Aktif",
+            Status.Inactive => "Pasif",
+            Status.Pending => "Beklemede",
+            _ => "Bilinmiyor"
+        };
+    }
+}
+
+// Kullanım:
+Status status = Status.Active;
+Console.WriteLine(status.GetDescription());  // "Aktif"
+```
+
+## Enum Best Practices:
+
+**✅ Doğru Kullanım:**
+```csharp
+// İyi isimlendirme
+public enum OrderStatus { Pending, Processing, Shipped }
+
+// Açıklayıcı değerler
+public enum HttpStatusCode 
+{ 
+    OK = 200, 
+    NotFound = 404, 
+    ServerError = 500 
+}
+
+// Flags için [Flags] attribute
+[Flags]
+public enum FilePermissions { Read = 1, Write = 2, Execute = 4 }
+```
+
+**❌ Yanlış Kullanım:**
+```csharp
+// Kötü isimlendirme
+public enum Status { S1, S2, S3 }  // Anlaşılmaz!
+
+// Flags olmadan bitwise
+public enum NotFlags { Value1 = 1, Value2 = 2 }  // [Flags] ekle!
+```
+
+## Avantajları:
+
+✅ Kod okunabilirliği artar (magic number yok)  
+✅ IntelliSense desteği  
+✅ Type-safe (tip güvenli)  
+✅ Hata yapma olasılığı azalır  
+✅ Refactoring kolay  
+
+**Özet:** Enum, ilişkili sabit değerler grubu için kullanılır. Kod okunabilirliğini artırır, magic number'lardan kurtarır. Durum, rol, tip gibi sınırlı seçenekler için ideal!

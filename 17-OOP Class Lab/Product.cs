@@ -9,24 +9,22 @@ namespace _17_OOP_Class_Lab
     public class Product
     {
         private double _price;//Encapsulation
+        public string Name { get; private set; }
 
-        public Product(double price, string name)
+        public Product(string name, double price)
         {
-            Price = price;
             Name = name;
-          
-         
+            Price = price;
         }
-        public Product(double price, string name,string category)
+
+        public Product(string name, double price, string category)
         {
-            Price = price;
             Name = name;
+            Price = price;
             Category = category;
-
-
         }
 
-        public string Name { get;  private set; }
+
 
         public double Price { get => _price;
 
@@ -51,41 +49,7 @@ namespace _17_OOP_Class_Lab
 
     }
 
-    internal class Order
-    {
-        private ICollection<Product> _products;
-
-        public Order(int orderId)
-        {
-            OrderId = orderId;
-            OrderDate= DateTime.Now;
-            _products = new HashSet<Product>();
-        }
-
-        public int OrderId { get;private set; }
-        public DateTime OrderDate { get;private set; }
-        public IReadOnlyList<Product> Products => _products.ToList().AsReadOnly();
-
-        public void AddProduct(Product product)
-        {
-            _products.Add(product);
-        }
-        public void RemoveProduct(Product product)
-        {
-            _products.Remove(product);
-        }
-
-        public String DisplayOrderSummary()
-        {
-            string baslik = $"Siparis no:{OrderId}, | Tarih: {OrderDate} \n Urun listesi \n";
-            foreach (var item in _products)
-            {
-                baslik += item.DisplayInfo() + "\n"; 
-            }
-            return baslik;
-        }
-
-    }
+   
 }
 //field
 //constractor

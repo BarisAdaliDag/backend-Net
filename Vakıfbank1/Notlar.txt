@@ -1,0 +1,33 @@
+﻿
+//TYPE CHECKING
+
+object item = 5;
+Console.WriteLine(item.GetType()); // Çıktı: System.Int32
+
+
+Type t = typeof(int);
+Console.WriteLine(t); // Çıktı: System.Int32
+
+
+object item = 42;
+
+if (item.GetType() == typeof(int))
+    Console.WriteLine("Tam olarak int tipi.");
+else if (item is string)
+    Console.WriteLine("String veya alt tipi.");
+else
+    Console.WriteLine("Farklı bir tip.");
+
+    // TYPE CASTING
+    ArrayList list = new ArrayList() { 10, "merhaba", 5 };
+
+foreach (var item in list)
+{
+    if (item.GetType() == typeof(int))
+    {
+        int sonuc = (int)item * 2;
+        Console.WriteLine(sonuc); // Çıktı: 20 ve 10
+    }
+}
+
+Yorumlar

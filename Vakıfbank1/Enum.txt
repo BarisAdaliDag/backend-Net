@@ -1,0 +1,256 @@
+﻿# C# Enum Notları
+
+## Enum Nedir?
+Enum (enumeration), birbiriyle ilişkili sabit değerleri gruplamak için kullanılır. Kodun okunabilirliğini artırır ve hata olasılığını azaltır.
+
+## Temel Kullanım
+
+```csharp
+// Basit enum tanımlama
+enum Gunler
+{
+    Pazartesi,    // 0
+    Sali,         // 1
+    Carsamba,     // 2
+    Persembe,     // 3
+    Cuma,         // 4
+    Cumartesi,    // 5
+    Pazar         // 6
+}
+
+// Kullanımı
+Gunler bugun = Gunler.Pazartesi;
+Console.WriteLine(bugun); // "Pazartesi"
+```
+
+## Değer Atama
+
+```csharp
+// Özel değerler atama
+enum HttpDurum
+{
+    OK = 200,
+    NotFound = 404,
+    InternalError = 500
+}
+
+// Ara değerler otomatik artar
+enum Seviye
+{
+    Kolay = 1,
+    Orta,      // 2
+    Zor,       // 3
+    CokZor = 10,
+    Imkansiz   // 11
+}
+```
+
+## Tip Belirleme
+
+```csharp
+// Farklı veri tipleri (byte, short, int, long)
+enum Boyut : byte
+{
+    Kucuk = 1,
+    Orta = 2,
+    Buyuk = 3
+}
+```
+
+## Dönüşümler
+
+```csharp
+enum Renkler { Kirmizi, Yesil, Mavi }
+
+// Enum'dan int'e
+int deger = (int)Renkler.Yesil; // 1
+
+// Int'ten enum'a
+Renkler renk = (Renkler)2; // Mavi
+
+// String'den enum'a
+Renkler renk2 = (Renkler)Enum.Parse(typeof(Renkler), "Kirmizi");
+// veya
+Enum.TryParse("Yesil", out Renkler renk3); // true
+
+// Enum'dan string'e
+string isim = Renkler.Kirmizi.ToString(); // "Kirmizi"
+```
+
+## Enum Metodları
+
+```csharp
+enum Mevsimler { Ilkbahar, Yaz, Sonbahar, Kis }
+
+// GetNames - Tüm isimleri al
+string[] isimler = Enum.GetNames(typeof(Mevsimler));
+// ["Ilkbahar", "Yaz", "Sonbahar", "Kis"]
+
+// GetValues - Tüm değerleri al
+Array degerler = Enum.GetValues(typeof(Mevsimler));
+
+// IsDefined - Değer tanımlı mı?
+bool varMi = Enum.IsDefined(typeof(Mevsimler), "Yaz"); // true
+
+// GetName - Değerden isim
+string ad = Enum.GetName(typeof(Mevsimler), 1); // "Yaz"
+```
+
+## Flags (Bayrak) Enum
+
+```csharp
+[Flags]
+enum Yetkiler
+{
+    Yok = 0,
+    Okuma = 1,      // 2^0
+    Yazma = 2,      // 2^1
+    Silme = 4,      // 2^2
+    Yonetici = 8    // 2^3
+}
+
+// Birden fazla değer atama
+Yetkiler kullanici = Yetkiler.Okuma | Yetkiler.Yazma;
+
+// Yetki kontrolü
+bool yazabilirMi = kullanici.HasFlag(Yetkiler.Yazma); // true
+bool silebilirMi = kullanici.HasFlag(Yetkiler.Silme); // false
+
+// Yetki ekleme
+kullanici |= Yetkiler.Silme;
+
+// Yetki çıkarma
+kullanici &= ~Yetkiler.Yazma;
+
+// Tüm yetkiler
+Yetkiler tumYetkiler = Yetkiler.Okuma | Yetkiler.Yazma | 
+                       Yetkiler.Silme | Yetkiler.Yonetici;
+```
+
+## Switch ile Kullanım
+
+```csharp
+enum Durum { Beklemede, Calisiyor, Tamamlandi, Hata }
+
+Durum siparisDurum = Durum.Calisiyor;
+
+switch (siparisDurum)
+{
+    case Durum.Beklemede:
+        Console.WriteLine("Sipariş bekleniyor");
+        break;
+    case Durum.Calisiyor:
+        Console.WriteLine("Sipariş hazırlanıyor");
+        break;
+    case Durum.Tamamlandi:
+        Console.WriteLine("Sipariş tamamlandı");
+        break;
+    case Durum.Hata:
+        Console.WriteLine("Hata oluştu");
+        break;
+}
+```
+
+## Pratik Örnekler
+
+```csharp
+// Örnek 1: Sipariş durumu
+enum SiparisDurum
+{
+    YeniSiparis,
+    Onaylandi,
+    Hazirlaniyor,
+    Kargoda,
+    TeslimEdildi,
+    Iptal
+}
+
+// Örnek 2: Dosya izinleri
+[Flags]
+enum DosyaIzinleri
+{
+    Yok = 0,
+    Okuma = 1,
+    Yazma = 2,
+    Calistirma = 4,
+    TamKontrol = Okuma | Yazma | Calistirma
+}
+
+// Örnek 3: Oyun karakteri
+enum KarakterSinif
+{
+    Savascı = 1,
+    Buyucu = 2,
+    Okcu = 3,
+    Rahip = 4
+}
+
+class Karakter
+{
+    public string Isim { get; set; }
+    public KarakterSinif Sinif { get; set; }
+}
+
+var karakter = new Karakter 
+{ 
+    Isim = "Aragorn", 
+    Sinif = KarakterSinif.Savascı 
+};
+```
+
+## Extension Method ile Kullanım
+
+```csharp
+enum Aylar { Ocak = 1, Subat, Mart, Nisan, Mayis, Haziran, 
+             Temmuz, Agustos, Eylul, Ekim, Kasim, Aralik }
+
+static class AylarExtensions
+{
+    public static string TurkceIsim(this Aylar ay)
+    {
+        return ay switch
+        {
+            Aylar.Ocak => "Ocak Ayı",
+            Aylar.Subat => "Şubat Ayı",
+            _ => ay.ToString()
+        };
+    }
+}
+
+// Kullanımı
+Aylar ay = Aylar.Mart;
+Console.WriteLine(ay.TurkceIsim());
+```
+
+## Enum ile Linq
+
+```csharp
+enum Notlar { Zayif = 1, Orta = 2, Iyi = 3, Pekiyi = 4, Mukemmel = 5 }
+
+// Tüm değerleri listele
+var tumNotlar = Enum.GetValues(typeof(Notlar))
+                    .Cast<Notlar>()
+                    .ToList();
+
+// 3'ten büyük notlar
+var yuksekNotlar = Enum.GetValues(typeof(Notlar))
+                       .Cast<Notlar>()
+                       .Where(n => (int)n > 3)
+                       .ToList();
+```
+
+## Önemli Notatlar
+
+✅ **Kullan:**
+- Sabit değer grupları için (durum, kategori, seçenekler)
+- Switch-case yapılarında
+- Kodun okunabilirliğini artırmak için
+
+❌ **Kullanma:**
+- Değişken değerler için
+- Veritabanından gelen dinamik veriler için
+
+⚠️ **Dikkat:**
+- Enum değerleri immutable'dır (değiştirilemez)
+- Flags enum'da her değer 2'nin kuvveti olmalı (1, 2, 4, 8, 16...)
+- Parse işlemlerinde try-catch veya TryParse kullan
