@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _32_Raletionship
+namespace _32_OOP_Relationship
 {
     public class Employee
     {
@@ -19,38 +19,46 @@ namespace _32_Raletionship
 
         public override string ToString()
         {
-            return $"Name {Name} Salary {Salary}";
+            return $"Name: {Name}, Salary: {Salary}";
         }
     }
+
     public class Developer : Employee
     {
-        public Developer(string name, decimal salary, List<string> programLanguaces) : base(name, salary)
+        public Developer(string name, decimal salary, List<string> programmingLanguages) : base(name, salary)
         {
-            ProgramLanguaces = programLanguaces;
+            ProgrammingLanguages = programmingLanguages;
         }
-        public List<string> ProgramLanguaces { get; set; }
+
+        public List<string> ProgrammingLanguages { get; set; }
 
         public override string ToString()
         {
-            return base.ToString() + $"\n Programming languace {String.Join(",",ProgramLanguaces)}";
+            return base.ToString() + "\nProgramming Languages: " + string.Join(", ", ProgrammingLanguages);
         }
     }
 
     public class Manager : Employee
     {
-        public Manager(string name, decimal salary, List<Employee> team) : base(name, salary)
-        {
-            Team = team;
-        }
         public List<Employee> Team { get; set; }
+        public Manager(string name, decimal salary) : base(name, salary)
+        {
+            Team = new List<Employee>();
+        }
+
+        public void AddToTeam(Employee employee)
+        { 
+            Team.Add(employee);
+        }
 
         public override string ToString()
         {
-           string mem
-
+            string member = "";
+            foreach (Employee emp in Team) 
+            { 
+                member += emp.ToString() + "\n";
+            }
+            return base.ToString() + "Team Members: \n" + member; 
         }
     }
-
-
 }
-

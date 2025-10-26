@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _31_OOP_Generic
 {
-    public class FoodProduct : Product
+    public class CozmeticProduct : Product
     {
-        public FoodProduct(string name, decimal price, int quantity) : base(name, price, quantity)
+        public CozmeticProduct(string name, decimal price, int quantity) : base(name, price, quantity)
         {
         }
     }

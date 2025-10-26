@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _30_BuildInterFace.Example_2
+namespace _23_OOP_Inheritance
 {
-    internal class Book
+    internal class Inheritance_yapayzeka
     {
     }
 }

@@ -6,35 +6,35 @@ using System.Threading.Tasks;
 
 namespace _31_OOP_Generic
 {
-    public class InventoryManagment<T> : IInvertoryManagment<T> where T : Product
+    public class InventoryManagement<T> : IInventoryManagement<T> where T : Product
     {
-        private List<T> produts = new List<T>();
+        private List<T> products = new List<T>();
+
         public void Add(T item)
         {
-            produts.Add(item);
-            Console.WriteLine($"{item.Name} added to inventory");
+            products.Add(item);
+            Console.WriteLine($"{item.Name} added to inventory.");
         }
 
         public void Decrease(T item, int amount)
         {
-            item.DecreseQuality(amount);
-
+            item.DecreaseQuantity(amount);
         }
 
         public List<T> GetAll()
         {
-            return produts;
+            return products;
         }
 
         public void Increase(T item, int amount)
         {
-           item.IncrementQuality(amount);
+            item.IncreaseQuantity(amount);
         }
 
         public void Remove(T item)
         {
-            produts.Remove(item);
-            Console.WriteLine($"{item.Name} removed from inventory");
+            products.Remove(item);
+            Console.WriteLine($"{item.Name} removed from inventory.");
         }
     }
 }

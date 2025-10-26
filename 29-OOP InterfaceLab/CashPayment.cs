@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace _29_OOP_InterfaceLab
 {
-    public class CashPeyment : BasePayment
+    public class CashPayment : BasePayment
     {
-        public CashPeyment(decimal amount) : base(amount)
+        public CashPayment(decimal amount) : base(amount)
         {
         }
 

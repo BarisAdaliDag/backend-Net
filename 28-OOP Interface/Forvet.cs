@@ -31,4 +31,27 @@ namespace _28_interface
 
 
     }
+    class Deneme : IFutbolcu
+    {
+        public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Numarasi { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Pasgucu { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int SutGucu { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int KosuGucu { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+        public void Kos()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PasAt()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SutCek()
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

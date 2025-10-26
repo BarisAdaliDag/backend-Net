@@ -6,6 +6,19 @@ using System.Threading.Tasks;
 
 namespace _29_OOP_InterfaceLab
 {
+
+    public class Deneme : IPayment
+    {
+        public void CancelPayment()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void MakePayment()
+        {
+            throw new NotImplementedException();
+        }
+    }
     public abstract class BasePayment : IPayment
 
     {

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _30_OOP_Generic.example_1
+namespace _30_OOP_BuiltInInterface.Example_1
 {
-    internal class Kitap
+    public class Kitap
     {
+        public string Ad { get; set; }
+        public string Yazar { get; set; }
     }
 }

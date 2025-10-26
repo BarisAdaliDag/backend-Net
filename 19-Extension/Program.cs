@@ -7,7 +7,7 @@
             string selam = "hello, World!";
 
             Console.WriteLine(selam.ReverseString());
-            Console.WriteLine(selam.CapitalizeFirst());
+            Console.WriteLine(selam.CapitilizeString());
 
             try
             {

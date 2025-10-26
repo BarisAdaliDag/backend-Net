@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace _31_OOP_Generic
 {
-    public interface IInvertoryManagment <T> where T : Product
+    public interface IInventoryManagement<T> where T : Product
     {
         void Add(T item);
-        void Remove (T item);
+        void Remove(T item);
         List<T> GetAll();
-        void Decrease( T item ,int amount);
+        void Decrease(T item, int amount);
         void Increase(T item, int amount);
     }
 }

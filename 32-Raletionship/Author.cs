@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _32_Raletionship
+namespace _32_OOP_Relationship
 {
     public class Author
     {
@@ -16,13 +17,13 @@ namespace _32_Raletionship
 
         public string Name { get; set; }
         public string Nationality { get; set; }
-        public List<Book> Books { get; set; }
+
         public override string ToString()
         {
-            return $"{Name} {Nationality}";
-
+            return $"{Name} ({Nationality})";
         }
-
+        //Navigation property
+        public List<Book> Books { get; set; } = new List<Book>();
     }
 
     public class Book
@@ -36,7 +37,6 @@ namespace _32_Raletionship
         public string Title { get; set; }
         public Author Author { get; set; }
         public Library Library { get; set; }
-
         public override string ToString()
         {
             return $"{Title} by {Author}";
@@ -45,25 +45,22 @@ namespace _32_Raletionship
 
     public class Library
     {
-        public Library(string name, List<Book> books)
-        {
-            Name = name;
-            Books = books;
-        }
-
         public string Name { get; set; }
         public List<Book> Books { get; set; }
+        public Library(string name)
+        {
+            Name = name;
+            Books = new List<Book>();
+        }
 
         public override string ToString()
         {
-            String books = "";
+            string books = "";
             foreach (var item in Books)
             {
-                books += "\t " + item.ToString() + '\n';
+                books += "\t- " + item.ToString() + "\n";
             }
-            return $" Library {Name} books in library\n{books}";
+            return $"Library: {Name} Books in the library:\n" + books;
         }
     }
-   
-
 }

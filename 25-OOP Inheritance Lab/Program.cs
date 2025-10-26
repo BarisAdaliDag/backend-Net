@@ -10,6 +10,7 @@
             ogretmen => Bransi,DeneyimYili,
             yonetici => Role, Yonettigi kisiler
 
+
             id (Otomatik Ogrencilar=100,Ogretmenler =300,Yoneticiler = 600) ,Ad Soyad,Email ToString
             
             Console Ui (listeleme ve ekleme)
@@ -28,7 +29,7 @@
             Teacher teacher = new Teacher("ahmet", "adiguzel", "@", 23, "tarih");
             Console.WriteLine(teacher);
 
-            Manager manager = Manager(){ };
+           // Manager manager = Manager(){ };
 
 
 

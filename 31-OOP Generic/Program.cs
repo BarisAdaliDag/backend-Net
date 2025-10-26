@@ -4,89 +4,129 @@
     {
         static void Main(string[] args)
         {
-            //Box<int>intBox = new Box<int>();
-            //  intBox.AddItem(1);
-            //  Console.WriteLine(intBox.GetIteam());
+            //Box<int> intBox = new Box<int>();
+            //intBox.AddItem(19);
+            //Console.WriteLine(intBox.GetItem());
 
+            //Box<Book> stringBox = new Box<Book>();
+            //stringBox.AddItem("Hello");
+            //Console.WriteLine(stringBox.GetItem());
 
-            //Box<string> stringBox = new Box<string>();
-            //stringBox.AddItem("aaa");
-            //Console.WriteLine(stringBox.GetIteam);
-            ElectronicProduct laptop = new ElectronicProduct("laptop", 23, 100, 2);
-            ElectronicProduct phone = new ElectronicProduct("phone", 23, 100, 2);
+            //Box<Developer> personBox = new Box<Developer>();
+            //personBox.AddItem(new Developer());
+            //Console.WriteLine(personBox.GetItem());
 
-            FoodProduct apple = new FoodProduct("Apple", 50, 100);
-            FoodProduct bread = new FoodProduct("bread", 50, 100);
+            //IRepository<string> repository = new Repository<string>();
+            //ICollection<string> list = new List<string>();
 
-            IInvertoryManagment<ElectronicProduct> electronic = new InventoryManagment<ElectronicProduct>();
-            electronic.Add (laptop);
-            electronic.Add (phone);
-            Console.WriteLine("Electorinic Inventory List");
-            foreach (var item in electronic.GetAll()) {
+            ElectronicProduct laptop = new ElectronicProduct("Laptop", 50000, 100, 2);
+            ElectronicProduct phone = new ElectronicProduct("Phone", 150000, 150, 2);
+
+            FoodProduct apple = new FoodProduct("Apple", 50, 1000);
+            FoodProduct bread = new FoodProduct("Bread", 150, 1000);
+
+            IInventoryManagement<ElectronicProduct> electronics = new InventoryManagement<ElectronicProduct>();
+            electronics.Add(laptop);
+            electronics.Add(phone);
+
+            Console.WriteLine("Electronic Inventory List");
+            foreach (var item in electronics.GetAll())
+            {
                 Console.WriteLine(item);
             }
-            electronic.Increase(laptop,30);
-            electronic.Decrease(phone,3);
-            Console.WriteLine("--------------------");
 
-        
+            electronics.Decrease(laptop, 50);
+            electronics.Increase(phone, 8);
 
+            IInventoryManagement<FoodProduct> foods = new InventoryManagement<FoodProduct>();
+            foods.Add(bread);
+            foods.Add(apple);
 
+            Console.WriteLine("Foods Inventory List");
+            foreach (var item in foods.GetAll()) 
+            {
+                Console.WriteLine(item);
+            }
+
+            foods.Decrease(apple, 200);
+
+            IInventoryManagement<CozmeticProduct> ınventoryManagement = new InventoryManagement<CozmeticProduct>();
         }
     }
-
-    //class ->T refetans tipli
-    //struct ->T value tipli
-    //new ->T parametresiz yapıcıya sahip olmalıdır.
-    //MyClass -> MyClass sınıfından türetilmiş bir class olmalıdır.(Base Class verdiğinde child class kullanılır)
-    // class yaptığında t type ı bunu sadece Class veya child class kullanabilir.Base Class verirsen.Child classlarıda kullanabilirsin.
-    //interface -> T type  interface belirtirsen.Sadece interface implemente classlarda kullanabilirsin
-    public class Box<T> where T : class 
+    //class -> T referans tip olmalıdır.
+    //struct -> T value tip olmalıdır
+    //new -> parametresiz yapıcıya sahip olmalıdır.
+    //MyClass -> MyClass sınıfından türemiş bir sınıf olmalıdır.
+    //IMyInterface -> IMyInterface'den implement edilmiş bir sınıf olmalıdır.
+    public class Box<T> where T : IMarker
     {
         private T item;
-        public void  AddItem(T value)
+
+        public void AddItem(T value) 
         {
-            item= value;
-        }
-        public T GetIteam()
-        {
-            return item;
+            item = value;
+            
         }
 
+        public T GetItem() 
+        { 
+            return item;
+        }
     }
 
     public interface IRepository<T>
-    {
+    { 
         void Add(T value);
         void Update(T value);
-        T GetValue(int id);
+        T Get(int id);
         List<T> GetAll();
     }
 
-    public class Kitap : IRepository<Kitap>
+    public class Repository<T> : IRepository<T>
     {
-        public void Add(Kitap value)
+        public void Add(T value)
         {
             throw new NotImplementedException();
         }
 
-        public List<Kitap> GetAll()
+        public T Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Kitap GetValue(int id)
+        public List<T> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Update(Kitap value)
+        public void Update(T value)
         {
             throw new NotImplementedException();
         }
     }
+    public interface IMarker 
+    { 
+    
+    }
 
+    public class Employee : IMarker
+    {
+        public string Name { get; set; }
+    }
+
+    public class Developer : IMarker
+    { 
+    
+    }
+
+    public class HR : IMarker 
+    { 
+    
+    }
+
+    public class Book 
+    { 
+    
+    }
 
 }
-
-

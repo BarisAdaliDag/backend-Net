@@ -25,6 +25,10 @@
             // Kullanici cikis yapar.
             // Diger kullanici giris yapip gelen mesajlari gorur.
             // Cevap verir.
+
+            Console.WriteLine("Mesajlasma Sistemi");
+
+
         }
     }
 }

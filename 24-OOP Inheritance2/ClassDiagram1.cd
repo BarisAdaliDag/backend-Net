@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="_24_OOP_Inheritance2.BaseMember" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEAAEAAAAEAAIAEAAEAAAAAAAAAAAQAAAAAAAAQAAg=</HashCode>
+      <FileName>BaseMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_24_OOP_Inheritance2.Program" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_24_OOP_Inheritance2.StandartMember" Collapsed="true">
+    <Position X="8.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAQAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>StandartMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_24_OOP_Inheritance2.VipMember" Collapsed="true">
+    <Position X="11.25" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>VipMember.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

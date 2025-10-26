@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace _23_OOP_Inheritance
 {
-    internal class NanoPhone //:SmartPhone
+    public class NanoPhone : MobilPhone
     {
+        public string Marka
+        {
+            get => default;
+            set
+            {
+            }
+        }
     }
 }

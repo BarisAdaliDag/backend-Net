@@ -4,50 +4,62 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace _32_Raletionship
+namespace _32_OOP_Relationship
 {
     public class Engine
     {
+        public Engine(string model, int horsePower)
+        {
+            Model = model;
+            HorsePower = horsePower;
+        }
+
         public string Model { get; set; }
         public int HorsePower { get; set; }
 
         public void Start()
         {
-
+            Console.WriteLine($"Engine {Model} with {HorsePower} HP is starting...");
         }
-        public void Stop() { }
 
-
-
-
+        public void Stop() 
+        { 
+            Console.WriteLine($"Engine {Model} is stopping..."); 
+        }
     }
+
     public class MusicSystem
     {
-        public string Brand { get; set; }
-
         public MusicSystem(string brand)
         {
             Brand = brand;
         }
+
+        public string Brand { get; set; }
+
         public void PlayMusic()
         {
-            Console.WriteLine();
+            Console.WriteLine($"Playing music on {Brand} music system.");
         }
     }
 
     public class Car
     {
-        public Car(string brand, Engine emgine)
+        public Car(string brand, Engine engine)
         {
             Brand = brand;
-            Emgine = emgine;
+            Engine = engine;
         }
 
         public string Brand { get; set; }
-        public Engine Emgine { get; set; } //Completition
-        public MusicSystem MusicSystem { get; set; }    //Aggretetion(Opsiyonel)
+        public Engine Engine { get; set; } // Composition
+        public MusicSystem MusicSystem { get; set; } //Aggregation (Opsiyonel)
 
-        public void StartCar() { }
-
+        public void StartCar() 
+        {
+            Console.WriteLine($"Starting {Brand} car...");
+            Engine.Start();
+            MusicSystem?.PlayMusic();
+        }
     }
 }

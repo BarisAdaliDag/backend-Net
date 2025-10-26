@@ -33,4 +33,20 @@ namespace _27_OOP_AbstractionLab
             }
         }
     }
+    //public class deneme : BankAccount
+    //{
+    //    public deneme(string accountNumber, string accountName) : base(accountNumber, accountName)
+    //    {
+    //    }
+
+    //    public override void Deposit(double amount)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+
+    //    public override void WithDraw(double amount)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
