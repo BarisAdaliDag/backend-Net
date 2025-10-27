@@ -7,6 +7,7 @@ using Z5_OOP_Lab2.Entity;
 
 namespace Z5_OOP_Lab2.DataAccess
 {
+
     public class IGenericRepo<T> : IGenericRepo<T> where T : class, IBaseEntity, new()
     {
 

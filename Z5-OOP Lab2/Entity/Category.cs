@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Z5_OOP_Lab2.Entity
 {
-    internal class Category
+    public class Category :BaseEntity
     {
     }
 }

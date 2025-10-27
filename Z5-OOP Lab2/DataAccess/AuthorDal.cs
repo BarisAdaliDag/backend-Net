@@ -7,8 +7,8 @@ using Z5_OOP_Lab2.Entity;
 
 namespace Z5_OOP_Lab2.DataAccess
 {
-    public class AuthorDal : IGenericRepo<Author>, IAuthorDal
-    {
+    //public class AuthorDal : IGenericRepo<Author>, IAuthorDal
+    //{
 
-    }
+    //}
 }

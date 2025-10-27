@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Z5_OOP_Lab2.Entity
 {
-    internal class Author
+    public class Author : BaseEntity
     {
+        public Member member { get; set; }
+        public string FullName { get; set; }
+
     }
 }

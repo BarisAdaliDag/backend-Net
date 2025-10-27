@@ -8,4 +8,49 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net6.0\z4-b_sinavalistirma.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\z4-b_sinavalistirma.GlobalUsings.g.cs" />
+    <Compile Include="obj\Debug\net9.0\.NETCoreApp,Version=v9.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net9.0\SinavAlistirma.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net9.0\SinavAlistirma.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="obj\Debug\net9.0\SinavAlistirma.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+    <Content Include="obj\SinavAlistirma.csproj.nuget.dgspec.json" />
+    <Content Include="obj\z4-b_sinavalistirma.csproj.nuget.dgspec.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="obj\Debug\net6.0\z4-b_sinavalistirma.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\z4-b_sinavalistirma.assets.cache" />
+    <None Include="obj\Debug\net6.0\z4-b_sinavalistirma.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\z4-b_sinavalistirma.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net9.0\apphost.exe" />
+    <None Include="obj\Debug\net9.0\refint\SinavAlistirma.dll" />
+    <None Include="obj\Debug\net9.0\ref\SinavAlistirma.dll" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.assets.cache" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.csproj.BuildWithSkipAnalyzers" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.dll" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.genruntimeconfig.cache" />
+    <None Include="obj\Debug\net9.0\SinavAlistirma.pdb" />
+    <None Include="obj\project.nuget.cache" />
+    <None Include="obj\SinavAlistirma.csproj.nuget.g.props" />
+    <None Include="obj\SinavAlistirma.csproj.nuget.g.targets" />
+    <None Include="obj\z4-b_sinavalistirma.csproj.nuget.g.props" />
+    <None Include="obj\z4-b_sinavalistirma.csproj.nuget.g.targets" />
+    <None Include="SinavAlistirma.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="obj\Debug\net6.0\refint\" />
+    <Folder Include="obj\Debug\net6.0\ref\" />
+  </ItemGroup>
+
 </Project>

@@ -79,6 +79,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "24-OPP Inheritance2 AI", "2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z4-OOP_Sinav_Alistirma", "Z4-OOP_Sinav_Alistirma\Z4-OOP_Sinav_Alistirma.csproj", "{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z5-OOP Lab2", "Z5-OOP Lab2\Z5-OOP Lab2.csproj", "{CE9030AA-8B3F-4F59-9E3F-882146DA9AE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "z4-b_sinavalistirma", "z4-b_sinavalistirma\z4-b_sinavalistirma.csproj", "{536701AC-0C8E-4C3C-BBC0-D29208A28E27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -237,6 +241,14 @@ Global
 		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9030AA-8B3F-4F59-9E3F-882146DA9AE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9030AA-8B3F-4F59-9E3F-882146DA9AE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9030AA-8B3F-4F59-9E3F-882146DA9AE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9030AA-8B3F-4F59-9E3F-882146DA9AE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536701AC-0C8E-4C3C-BBC0-D29208A28E27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536701AC-0C8E-4C3C-BBC0-D29208A28E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536701AC-0C8E-4C3C-BBC0-D29208A28E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536701AC-0C8E-4C3C-BBC0-D29208A28E27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

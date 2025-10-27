@@ -8,8 +8,11 @@ namespace Z5_OOP_Lab2.Entity
 {
     public class Member : BaseEntity
     {
-        public string username { get; set; }
-        public string password { get; set; }
-        public Member? member { get; set; }
+        public string UserName { get; set; } = null!;
+        public string Email { get; set; } = null!;
+        public string Password { get; set; } = null!;
+        public string PhoneNumber { get; set; } = null!;
+        // RP
+        public Author? Author { get; set; }
     }
 }

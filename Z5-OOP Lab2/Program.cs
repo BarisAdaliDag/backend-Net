@@ -11,6 +11,10 @@ namespace Z5_OOP_Lab2
             // ICustomerDal customerDal = new CustomerDal();
             IMemberDal memberDal = new MemberDal();
             IAuthorDal authorDal = new AuthorDal();
+            ICategoryDal category = new CategoryDal();
+            ICommentDal commentDal = new CommentDal();
+            IPostDal postDal = new PostDal();
+
         }
     }
 }
