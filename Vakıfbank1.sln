@@ -61,21 +61,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "28-OOP Interface", "28-OOP 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "29-OOP InterfaceLab", "29-OOP InterfaceLab\29-OOP InterfaceLab.csproj", "{A8FFD399-C477-46ED-A846-30BFDC4EE804}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "30-OOP BuildInterFace", "30-BuildInterFace\30-OOP BuildInterFace.csproj", "{29253409-F076-4C30-99EF-7324A4F36C29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "30-OOP BuildInterFace", "30-BuildInterFace\30-OOP BuildInterFace.csproj", "{29253409-F076-4C30-99EF-7324A4F36C29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "31-OOP Generic", "31-OOP Generic\31-OOP Generic.csproj", "{7D4D4D3D-16C2-40F9-9462-76F36EE01358}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "31-OOP Generic", "31-OOP Generic\31-OOP Generic.csproj", "{7D4D4D3D-16C2-40F9-9462-76F36EE01358}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "32-Raletionship", "32-Raletionship\32-Raletionship.csproj", "{A527F9E1-EA81-45AB-AC64-A982142FB315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "32-Raletionship", "32-Raletionship\32-Raletionship.csproj", "{A527F9E1-EA81-45AB-AC64-A982142FB315}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z2-OOP ıntro", "Z2-OOP ıntro\Z2-OOP ıntro.csproj", "{7A73F1AB-BA37-4DB0-B6DD-74D69576F3F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z2-OOP ıntro", "Z2-OOP ıntro\Z2-OOP ıntro.csproj", "{7A73F1AB-BA37-4DB0-B6DD-74D69576F3F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z3-OOP Lab1", "Z3-OOP Lab1\Z3-OOP Lab1.csproj", "{6C61DAE2-DF48-4A6E-94A2-AFE01FC5DD41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z3-OOP Lab1", "Z3-OOP Lab1\Z3-OOP Lab1.csproj", "{6C61DAE2-DF48-4A6E-94A2-AFE01FC5DD41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-TypeCasting", "02-TypeCasting\02-TypeCasting.csproj", "{A252877A-0931-4C18-BDE5-506B4DD46BD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02-TypeCasting", "02-TypeCasting\02-TypeCasting.csproj", "{A252877A-0931-4C18-BDE5-506B4DD46BD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "16- OOP Class", "16- OOP Class\16- OOP Class.csproj", "{07D375FE-4FF0-4C21-82C0-2670387CCD78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "16- OOP Class", "16- OOP Class\16- OOP Class.csproj", "{07D375FE-4FF0-4C21-82C0-2670387CCD78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "24-OPP Inheritance2 AI", "24-OPP Inheritance2 AI\24-OPP Inheritance2 AI.csproj", "{645416A2-1822-4EC8-8BA0-A5F12C4BDF32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "24-OPP Inheritance2 AI", "24-OPP Inheritance2 AI\24-OPP Inheritance2 AI.csproj", "{645416A2-1822-4EC8-8BA0-A5F12C4BDF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Z4-OOP_Sinav_Alistirma", "Z4-OOP_Sinav_Alistirma\Z4-OOP_Sinav_Alistirma.csproj", "{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -231,6 +233,10 @@ Global
 		{645416A2-1822-4EC8-8BA0-A5F12C4BDF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{645416A2-1822-4EC8-8BA0-A5F12C4BDF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{645416A2-1822-4EC8-8BA0-A5F12C4BDF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D1D3E17-881A-41C0-9AC8-5CF845ACE3ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

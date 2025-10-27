@@ -93,6 +93,7 @@ namespace Vakıfbank1
             return "Bu bir hayvandır";
         }
     }
+   
 
     class Kopek3 : Hayvan3
     {
