@@ -2,7 +2,7 @@
 
 namespace SinavAlistirma.DataAccess
 {
-    public class CustomerDal : GenericRepo<Customer>,ICustomerDal
+    public class CustomerDal : GenericRepository<Customer>,ICustomerDal
     {
 
     }

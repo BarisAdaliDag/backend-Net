@@ -2,7 +2,7 @@
 
 namespace SinavAlistirma.DataAccess
 {
-    public interface ISellerDal : IGenericRepo<Seller>
+    public interface ISellerDal : IGenericRepository<Seller>
     {
 
     }
