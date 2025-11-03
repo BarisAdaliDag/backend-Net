@@ -1,0 +1,136 @@
+﻿--Group BY, veri
+
+SELECT Country, COUNT(*) AS KisiSayisi FROM Employees WHERE Country IS NOT NULL  GROUP BY Country
+
+--CALISANLARIN YAPMIS OLDUGU SUPARUS ADETI
+
+SELECT EmployeeID,Count(*) as SiparisAdeti FROM Orders Group By EmployeeID ORDER BY SiparisAdeti DESC
+
+-- urun bedeli 35$ dolardan az olan urunlerin kategorilerin gruplanmasi
+
+SELECT CategoryID, COUNT(*) FROM Products WHERE UnitPrice <= 35 GROUP BY CategoryID
+
+--bas hardi a-k araliginda olan stok miktari 5 ile 50 arasinda olan urunleri kategorilerine gore siralayiniz
+
+--SELECT ProductName, COUNT(*) FROM Products WHERE  ProductName BETWEEN 'A' AND 'K' AND UnitsInStock BETWEEN 5 AND 50 GROUP BY CategoryID
+SELECT CategoryID, COUNT(*) FROM Products WHERE  ProductName  LIKE '[A-K]%' AND UnitsInStock BETWEEN 5 AND 50 GROUP BY CategoryID
+
+--order details bir id toplam deger
+
+SELECT 
+    OrderID,
+    SUM(UnitPrice * Quantity * (1 - Discount)) AS Tutar
+FROM [Order Details]
+GROUP BY OrderID
+ORDER BY Tutar DESC;
+
+--HAVING , gruplama uzerinde bir flitreleme yapmak istedigimiz zaman kullanilir.
+
+SELECT 
+    OrderID,
+    SUM(UnitPrice * Quantity * (1 - Discount)) AS Tutar
+FROM [Order Details]
+GROUP BY OrderID
+HAVING SUM(UnitPrice * Quantity * (1 - Discount)) BETWEEN 2500 AND 3000
+
+-- 10 fazla siparis verilen musterileri bulun
+
+SELECT 
+    CustomerID,
+    COUNT(OrderID)
+FROM Orders
+GROUP BY CustomerID
+HAVING COUNT(OrderID) > 10 
+ORDER BY 2 DESC
+
+-------------------------------------------------------
+--SUBQUERY
+
+--Degisken Tanimlama
+
+DECLARE @Ad NVARCHAR(50)
+SET @Ad = 'BilgeAdam'
+SELECT @Ad
+
+DECLARE @AdSoyad NVARCHAR(50), @Yas INT
+Set @AdSoyad = 'BarisDag'
+SET @Yas  = 29
+SELECT @AdSoyad Adi , @Yas Yasi
+PRINT @AdSoyad  -- string metin yazdirmak icin kullanilir 
+
+DECLARE @UrunAdi NVARCHAR(50) 
+SET @UrunAdi  = (SELECT ProductName FROM Products WHERE ProductID = 10)
+
+
+Declare @OrtFiyat Money = (select AVG(UnitPrice) from Products)
+Select * From Products WHERE UnitPrice > @OrtFiyat
+
+Select * From Products WHERE UnitPrice > (select AVG(UnitPrice) from Products)
+
+--Urunler tablsosundaki satilan urunlerin listesi
+
+SELECT DISTINCT ProductID 
+FROM [Order Details];
+
+SELECT * 
+FROM Products
+WHERE ProductID IN (SELECT DISTINCT ProductID FROM [Order Details]);
+
+SELECT ProductName, UnitPrice, UnitsInStock, CategoryID FROM Products;
+SELECT ProductName, UnitPrice, UnitsInStock, (SELECT CategoryName  + ' deneme' FROM Categories WHERE CategoryID = P.CategoryID) AS CategoryName FROM Products P;
+
+--Kargo sirketlerinin tasidiklari siparis sayilari
+
+-- hata SELECT (SELECT CompanyName FROM [dbo].[Suppliers]  WHERE  SupplierID = P.SupplierID ),UnitsInStock FROM [dbo].[Products] P GROUP BY SupplierID;
+
+SELECT 
+    (SELECT TOP 1 CompanyName FROM Shippers S WHERE S.ShipperID = O.ShipVia) AS ShipperName,
+    COUNT(*) AS OrderCount
+FROM Orders O
+GROUP BY ShipVia;
+
+
+-----------------------------------------------------------------
+ --  --https://alkanfatih.com/sql-join-tablo-birlestirme-inner-left-outer-right-outer-full-cross/
+
+ --JOIN , iki veya daha fazla tabloyu birlestimek icin kullanilir
+
+SELECT * FROM Products  JOIN Categories ON Products.CategoryID = Categories.CategoryID;
+--join default inner join
+
+--Hangi siparis hangi calisan tarafindan hangi musteriye yapildi
+
+SELECT 
+    O.OrderID,
+    E.FirstName + ' ' + E.LastName AS EmployeeName,
+    C.CompanyName AS CustomerName
+FROM Orders O
+JOIN Employees E ON O.EmployeeID = E.EmployeeID
+JOIN Customers C ON O.CustomerID = C.CustomerID;
+
+/*
+Suppliers tablosundan CompanyName ve ContactName,
+Products tablosundan ProductName ve UnitPrice,
+Categories tablosundan CategoryName sütunlarını getiriniz.
+Sonuçları CompanyName’e göre artan sırada sıralayınız.
+*/
+
+SELECT 
+    S.CompanyName, 
+    S.ContactName, 
+    P.ProductName, 
+    P.UnitPrice, 
+    C.CategoryName
+FROM Suppliers S
+JOIN Products P ON S.SupplierID = P.SupplierID
+JOIN Categories C ON C.CategoryID = P.CategoryID
+ORDER BY S.CompanyName ASC;
+
+--Kategorilere gore toplam stok Miktarini bulunuz
+SELECT 
+    C.CategoryName, 
+    SUM(P.UnitsInStock) AS TotalStock
+FROM Products P
+JOIN Categories C ON P.CategoryID = C.CategoryID
+GROUP BY C.CategoryName;
+
