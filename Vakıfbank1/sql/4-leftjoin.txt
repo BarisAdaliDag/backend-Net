@@ -1,0 +1,131 @@
+﻿-- Her bır calısan toplam ne kadarlık satıs yapmıstır
+
+SELECT (FirstName + ' ' + LastName),SUM(UnitPrice * Quantity * (1-Discount)) AS Toplam FROM Employees E 
+JOIN Orders O ON O.EmployeeID = E.EmployeeID
+JOIN [dbo].[Order Details] AS OD ON  OD.OrderID = O.OrderID
+GROUP BY (FirstName + ' ' + LastName)
+
+--LEFT JOIN
+
+SELECT * FROM Categories C LEFT JOIN Products P ON C.CategoryID = P.CategoryID
+
+--Right JOIN
+
+SELECT * FROM Categories C Right JOIN Products P ON C.CategoryID = P.CategoryID
+
+--Full JOIN
+
+SELECT * FROM Categories C FULL JOIN Products P ON C.CategoryID = P.CategoryID
+
+--Tum calisanlari rapor verdigi kisiyle birlikte verin
+
+SELECT (E1.FirstName + ' ' + E1.LastName) AS Calisan, (E2.FirstName + ' ' + E2.LastName) AS Mudur  FROM Employees E1 
+LEFT JOIN Employees E2 ON E1.ReportsTo = E2.EmployeeID
+
+
+--CROSS JOIN
+SELECT COUNT(*) FROM Categories
+SELECT COUNT(*) FROM Products
+SELECT CategoryName, ProductName FROM Categories CROSS JOIN Products
+SELECT COUNT(*) FROM Products CROSS JOIN Suppliers;
+--Store Procedure Nedir? -Onceden derlenmis ve saklanmis sql komutlari toplulugudur
+
+
+--Store Procedure Nedir? -Onceden derlenmis ve saklanmis sql komutlari toplulugudur
+
+
+/*CREATE PROCEDURE SP_MusterileriGetir
+AS
+BEGIN
+  SELECT * FROM Customers
+END
+EXEC SP_MusterileriGetir
+*/
+
+
+
+
+
+CREATE PROCEDURE SP_GetCustomerById
+    @CustomerID NVARCHAR(5)  -- Parametre burada tanımlanır
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        *
+    FROM Customers
+    WHERE CustomerID = @CustomerID;
+END
+GO
+
+-- 2. Prosedürü ÇALIŞTIR (EXEC)
+EXEC SP_GetCustomerById @CustomerID = 'BERGS';
+
+
+--3-SORU
+
+-- 1. Prosedürü OLUŞTUR
+DROP PROCEDURE IF EXISTS SP_OrderDate;
+GO
+
+CREATE PROCEDURE SP_OrderDate
+    @StartDate DATE,
+    @EndDate DATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        OrderID,
+        OrderDate
+    FROM Orders
+    WHERE OrderDate BETWEEN @StartDate AND @EndDate
+    ORDER BY OrderDate;
+END
+GO
+
+-- 2. Prosedürü ÇALIŞTIR (Örnek: 1996 Temmuz ayı)
+EXEC SP_OrderDate 
+    @StartDate = '1996-07-01', 
+    @EndDate = '1996-07-31';
+
+--
+
+===========================================================================================
+--Function
+/*
+SELECT FirstName, 
+       (YEAR(GETDATE()) - YEAR(Birthdate)) 
+FROM Employees
+*/
+CREATE FUNCTION CalculateAge (@Birhdate DATE)
+RETURNS INT
+AS
+BEGIN
+    DECLARE @Age INT
+    SET @Age = DATEDIFF(YEAR, @Birhdate, GETDATE())
+    RETURN @Age
+END
+
+CREATE FUNCTION KdvHesapla(@Fiyat Money, @CatId INT)
+RETURNS MONEY
+AS
+BEGIN
+	IF (@CatId =5)
+	BEGIN
+		RETURN @fiyat *1.10
+	END
+
+	RETURN @Fiyat * 1.20
+END
+
+SELECT ProductName,UnitPrice,[dbo].[KdvHesapla](UnitPrice,CategoryID) From Products
+
+
+CREATE FUNCTION GetCustomerByCity (@City NVARCHAR(50))
+RETURNS TABLE
+AS
+RETURN (SELECT CustomerID, CompanyName, City FROM Customers WHERE City = @City)
+
+SELECT CompanyName , City FROM [dbo].[GetCustomerByCity] ('Berlin')
