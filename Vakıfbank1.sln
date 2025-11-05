@@ -93,9 +93,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Z5-OOP_Ai_upgrade", "Z5-OOP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yy3-claude", "yy3-claude\yy3-claude.csproj", "{B75177A5-ED40-4FB5-A32E-C43612228D23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "33-Linq", "33-Linq\33-Linq.csproj", "{44F78790-311E-4CC4-8EAA-07753EB87BE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "33-Linq", "33-Linq\33-Linq.csproj", "{44F78790-311E-4CC4-8EAA-07753EB87BE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "33-2-Linq", "33-2-Linq\33-2-Linq.csproj", "{7744B8D2-188F-421F-80E1-F47E6C963198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "33-z-Linq", "33-2-Linq\33-z-Linq.csproj", "{7744B8D2-188F-421F-80E1-F47E6C963198}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "34-AdoNET", "34-AdoNET\34-AdoNET.csproj", "{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -291,6 +293,10 @@ Global
 		{7744B8D2-188F-421F-80E1-F47E6C963198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7744B8D2-188F-421F-80E1-F47E6C963198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7744B8D2-188F-421F-80E1-F47E6C963198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
