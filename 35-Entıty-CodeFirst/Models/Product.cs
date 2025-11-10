@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace _35_Entity_CodeFirst.Models
 {
-    [Table("TblProduct")]
+    //[Table("TblProduct")]
     public class Product
     {
         public Product()
         {
-            
+
         }
         public Product(string name, decimal price)
         {
@@ -38,24 +38,26 @@ namespace _35_Entity_CodeFirst.Models
 
         private decimal _price;
 
-        [Key]
+        //[Key]
         public int Id { get; set; } //PrimaryKey Identity
 
-        [Required(ErrorMessage = "Boş geçilemez.")]
-        [DisplayName("Adınız")]
-        [MaxLength(100)]
-        [StringLength(100, MinimumLength = 5)]
-        [Column("adi",Order = 2, TypeName ="nvarchar(50)")]
+        #region DataAnnations
+        //[Required(ErrorMessage = "Boş geçilemez.")]
+        //[DisplayName("Adınız")]
+        //[MaxLength(100)]
+        //[StringLength(100, MinimumLength = 5)]
+        //[Column("adi",Order = 2, TypeName ="nvarchar(50)")]
+        //[Range(0.1,100000)]
+        //[DataType(DataType.PhoneNumber)]
+        //[Phone]
+        #endregion
 
         public string Name { get; set; } //not null
 
-        [Range(0.1,100000)]
-        [DataType(DataType.PhoneNumber)]
-        [Phone]
         public decimal Price
         {
             get { return _price; }
-            set 
+            set
             {
                 if (value > 0)
                     _price = value;
@@ -64,10 +66,10 @@ namespace _35_Entity_CodeFirst.Models
             }
         }
 
-        public DateTime Deneme { get; set; } = DateTime.Now;
         public int CategoryId { get; set; } //Foregein Key
         public Category Category { get; set; } //Navigation property
         public ProductDetail ProductDetail { get; set; }
-        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+        //public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+        public ICollection<ProductTag> ProductTags { get; set; } = new List<ProductTag>();
     }
 }

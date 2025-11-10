@@ -80,16 +80,45 @@ namespace _35_Entity_CodeFirst
 
                 //foreach (var item in products)
                 //{
-                    
+
                 //}
 
                 #endregion
 
-                Console.WriteLine(context.SaveChanges()>0?"Veritabanı operasyonu başarılı":"Veritabanı operasyonu başarısız");
+                var product = new Product()
+                {
+                    Name = "Test Product",
+                    Price = 100,
+                    Category = new Category()
+                    {
+                        Name = "Test Kategori"
+                    },
+                    ProductDetail = new ProductDetail()
+                    {
+                        Color = "Mavi",
+                        Description = "Test Description"
+                    },
+                    ProductTags = new List<ProductTag>
+                    {
+                        new ProductTag
+                        {
+                            Tag = new Tag { Title = "Yeni" }
+                        },
+                        new ProductTag
+                        {
+                            Tag = new Tag { Title = "Kampanya" }
+                        }
+                    }
+                };
 
+                context.Products.Add(product);
+
+                Console.WriteLine(context.SaveChanges() > 0 ? "Veritabanı operasyonu başarılı" : "Veritabanı operasyonu başarısız");
 
                 Console.ReadLine();
-            };
+                Console.WriteLine(  "Hello");
+            }
+            ;
 
         }
     }

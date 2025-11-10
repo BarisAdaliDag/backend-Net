@@ -12,13 +12,11 @@ namespace _35_Entity_CodeFirst.Models
         private string _lastName;
 
         public int Id { get; set; }
-
         public string FirstName
         {
             get { return _firstName; }
             set { _firstName = value; }
         }
-
         public string LastName
         {
             get { return _lastName; }
@@ -26,11 +24,10 @@ namespace _35_Entity_CodeFirst.Models
         }
 
         public string FullName => _firstName + " " + _lastName;
-
         public string Email { get; set; }
-
         public string? Phone { get; set; }
-
         public DateTime? BirthDate { get; set; }
+
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }
