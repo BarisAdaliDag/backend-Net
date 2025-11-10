@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace _34_AdoNET.Repo
 {
+    using _34_AdoNET.Models;
     using Microsoft.Data.SqlClient;
     using System;
     using System.Collections.Generic;

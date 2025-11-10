@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _34_AdoNET.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

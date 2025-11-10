@@ -51,7 +51,7 @@
             foreach (var item in groupedResult)
             {
                 Console.WriteLine(item.Key + " " + item.Count());
-                Console.WriteLine("--------------");
+                Console.WriteLine("GroupBy--------------");
                 foreach (var student in item)
                 {
                     Console.WriteLine(student);
