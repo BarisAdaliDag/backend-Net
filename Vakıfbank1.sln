@@ -97,15 +97,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "33-Linq", "33-Linq\33-Linq.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "33-z-Linq", "33-2-Linq\33-z-Linq.csproj", "{7744B8D2-188F-421F-80E1-F47E6C963198}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "34-AdoNET", "34-AdoNET\34-AdoNET.csproj", "{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "34-AdoNET", "34-AdoNET\34-AdoNET.csproj", "{35BCD71C-B728-49FF-A41B-CEB40FEC4EB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "35-Entity-CodeFirst", "35-Entıty-CodeFirst\35-Entity-CodeFirst.csproj", "{27C9F107-F342-47A7-85E8-DAEB360AF7D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "35-Entity-CodeFirst", "35-Entıty-CodeFirst\35-Entity-CodeFirst.csproj", "{27C9F107-F342-47A7-85E8-DAEB360AF7D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "36-Entity-State", "36-Entity-State\36-Entity-State.csproj", "{4BE62D17-6EF6-8DD1-ADEB-B2FB7EF4124B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "36-Entity-State", "36-Entity-State\36-Entity-State.csproj", "{4BE62D17-6EF6-8DD1-ADEB-B2FB7EF4124B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "37-Entity-Inheritance", "37-Entity-Inheritance\37-Entity-Inheritance.csproj", "{683A1712-A457-C42E-CB67-3B077CC929EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "37-Entity-Inheritance", "37-Entity-Inheritance\37-Entity-Inheritance.csproj", "{683A1712-A457-C42E-CB67-3B077CC929EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "38-Entity-LoadingType", "38-Entity-LoadingType\38-Entity-LoadingType.csproj", "{AA13F4DD-1BA1-1CD3-3487-A217AD137FF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "38-Entity-LoadingType", "38-Entity-LoadingType\38-Entity-LoadingType.csproj", "{AA13F4DD-1BA1-1CD3-3487-A217AD137FF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "39-Api-FirstApp", "39-Api-FirstApp\39-Api-FirstApp.csproj", "{F26E705D-F38C-468E-905B-BC52B08DC22A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -274,6 +276,10 @@ Global
 		{AA13F4DD-1BA1-1CD3-3487-A217AD137FF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA13F4DD-1BA1-1CD3-3487-A217AD137FF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA13F4DD-1BA1-1CD3-3487-A217AD137FF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26E705D-F38C-468E-905B-BC52B08DC22A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26E705D-F38C-468E-905B-BC52B08DC22A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26E705D-F38C-468E-905B-BC52B08DC22A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26E705D-F38C-468E-905B-BC52B08DC22A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
