@@ -2,6 +2,7 @@
 using _39_Api_FirstApp.Models.Route;
 using _39_Api_FirstApp.Repo;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
@@ -130,8 +131,103 @@ namespace _39_Api_FirstApp.Controllers
             return Ok(response);
         }
 
+        //[HttpPost]
+        //public  IActionResult SubmitForm([FromForm]Employee employee) 
+        //{
+        //    var emp = EmployeeData.Employees([])
+        //}
+        [HttpPost("upload")]
+        public IActionResult UploadFile([FromForm] FileUploadModel model)
+        {
+            if(model.File ==null || model.File.Length == 0)
+            {
+                return BadRequest("File is missing");
+            }
+            return Ok(new
+            {
+                FileName = model.File.FileName,
+                FileSize = model.File.Length,
+                Description = model.Description
+            });
+        }
+
+        [HttpGet("get-client-id")]
+        public IActionResult GetClientId([FromHeader(Name = "X-Client-Id")] int clientId)
+        {
+            var emp = EmployeeData.Employees.FirstOrDefault(x => x.Id == clientId);
+            if (emp == null)
+                return NotFound();
+
+            return Ok(emp);
+        }
+        [HttpPut("{id}")]
+        public IActionResult UpdateEmployee(int id, [FromBody] EmployeeDTO model)
+        {
+            var emp = EmployeeData.Employees.FirstOrDefault(x => x.Id == id);
+            if (emp == null)
+            {
+                return NotFound();
+            }
+            emp.Name =  model.Name == null ? emp.Name : model.Name;
+            emp.Department = string.IsNullOrWhiteSpace(model.Department) ? emp.Department : model.Department; //dogrusu
+            emp.City = model.City ?? emp.City;
+            emp.Gender = model.Gender ?? emp.Gender;
+
+            return Ok(emp);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteEmployee([FromRoute]int id )
+        {
+            var emp = EmployeeData.Employees.FirstOrDefault(x => x.Id == id);
+            if (emp == null)
+            {
+                return NotFound();
+            }
+            EmployeeData.Employees.Remove(emp);
+
+            return NoContent();
+        }
 
 
+        [HttpPatch("{id}")]
+        public IActionResult PatchEmployee([FromRoute] int id, [FromBody] JsonPatchDocument<Employee> patchDoc )
+        {
+            if (patchDoc == null)
+                return BadRequest();
+
+            var emp = EmployeeData.Employees.FirstOrDefault(x => x.Id == id);
+            if (emp == null)
+            {
+                return NotFound();
+            }
+            //  patchDoc.ApplyTo(emp)
+            patchDoc.ApplyTo(emp, ModelState);
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            return NoContent();
+
+
+        }
+
+        [HttpHead("{id}")]
+        public IActionResult HeadEmployee([FromRoute] int id)
+        {
+            var emp = EmployeeData.Employees.FirstOrDefault(x => x.Id == id);
+            if (emp == null)
+            {
+                return NotFound();
+            }
+        
+
+            return Ok();
+        }
+        [HttpOptions()]
+        public IActionResult EmpOptions() {
+            Response.Headers.Add("Allow", "Get,post,put,Delete");
+            return Ok();
+        }
 
 
     }
