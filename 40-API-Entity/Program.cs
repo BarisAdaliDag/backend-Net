@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _40_API_Entity
 {
+    //e-TAH KONTROLUNUE BAK PRODUCT PUT ANLAMADIM ONA BAK
     public class Program
     {
         public static void Main(string[] args)
@@ -15,6 +16,8 @@ namespace _40_API_Entity
             // DbContext ekleme
             var conn = builder.Configuration.GetConnectionString("DeafaultConn");
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(conn));
+
+            //hoca automapper bu yapiya internetten bak
 
             // Swagger
             builder.Services.AddEndpointsApiExplorer();
