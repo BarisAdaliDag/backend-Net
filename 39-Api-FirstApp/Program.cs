@@ -34,7 +34,12 @@ namespace _39_Api_FirstApp
             app.UseHttpsRedirection();
 
             //Merkezi route kurabilirsin api tercih edilmez Daha cok MVC projelerde 
-            //TODO: HOCA
+            //app.UseEndpoints(endpoints => {
+            //    endpoints.MapControllerRoute(
+            //        name:"default",
+            //        pattern: "api/{controller}/{action}/{id?}",
+            //        defaults: new { controller = "Home", action = "Index" });
+            //});
 
             app.UseAuthorization();
 

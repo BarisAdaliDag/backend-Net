@@ -15,6 +15,10 @@ namespace _39_Api_FirstApp.Controllers
     public class EmployeeController : ControllerBase
     {
         [HttpGet]
+        [HttpGet("All")]
+        [HttpGet("AllEmployees")]
+        [HttpGet("GetAll")]
+        [HttpGet("[action]")]
         public ActionResult<List<Employee>> GetEmployees()
         {
             if (EmployeeData.Employees.Count < 0)
@@ -24,7 +28,8 @@ namespace _39_Api_FirstApp.Controllers
             return Ok(EmployeeData.Employees);
         }
 
-        [HttpGet("{id}")]
+        [Route("{id:int:min(1):max(50)}")]
+        [HttpGet]
         public ActionResult<Employee> GetEmployee([FromRoute] int id)
         {
             var employee = EmployeeData.Employees.FirstOrDefault(x => x.Id == id);
@@ -39,9 +44,9 @@ namespace _39_Api_FirstApp.Controllers
         public ActionResult<List<Employee>> GetEmployeeGenderAndCity(string gender, string city)
         {
             var filteredEmployee = EmployeeData.Employees.Where(e => e.Gender.Equals(gender, StringComparison.OrdinalIgnoreCase) &&
-            e.City.Equals(gender, StringComparison.OrdinalIgnoreCase));
+            e.City.Equals(city, StringComparison.OrdinalIgnoreCase)).ToList();
 
-            if (filteredEmployee.Any())
+            if (!filteredEmployee.Any())
             {
                 return NotFound($"Not Femployees with gender{gender} with city {city}");
             }

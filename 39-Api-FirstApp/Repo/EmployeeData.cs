@@ -2,36 +2,35 @@
 
 namespace _39_Api_FirstApp.Repo
 {
-    public class EmployeeData
+    public static class EmployeeData
     {
-      public static  List<Employee> Employees = new List<Employee>
-            {
-                new Employee { Id = 1, Name = "Ahmet Yılmaz", Gender = "Erkek", Department = "IT", City = "İstanbul" },
-                new Employee { Id = 2, Name = "Ayşe Demir", Gender = "Kadın", Department = "HR", City = "Ankara" },
-                new Employee { Id = 3, Name = "Mehmet Kara", Gender = "Erkek", Department = "Finance", City = "İzmir" },
-                new Employee { Id = 4, Name = "Elif Şahin", Gender = "Kadın", Department = "Marketing", City = "Bursa" },
-                new Employee { Id = 5, Name = "Mert Can", Gender = "Erkek", Department = "Sales", City = "Antalya" },
-                new Employee { Id = 6, Name = "Zeynep Güneş", Gender = "Kadın", Department = "IT", City = "İstanbul" },
-                new Employee { Id = 7, Name = "Fatma Çelik", Gender = "Kadın", Department = "Finance", City = "Ankara" },
-                new Employee { Id = 8, Name = "Ali Öz", Gender = "Erkek", Department = "Sales", City = "İzmir" },
-                new Employee { Id = 9, Name = "Cem Korkmaz", Gender = "Erkek", Department = "HR", City = "İstanbul" },
-                new Employee { Id = 10, Name = "Deniz Aydın", Gender = "Kadın", Department = "Marketing", City = "Bursa" },
-                new Employee { Id = 11, Name = "Selim Er", Gender = "Erkek", Department = "IT", City = "Ankara" },
-                new Employee { Id = 12, Name = "Gamze Uçar", Gender = "Kadın", Department = "Sales", City = "İzmir" },
-                new Employee { Id = 13, Name = "Burak Aslan", Gender = "Erkek", Department = "Finance", City = "Antalya" },
-                new Employee { Id = 14, Name = "Ece Arslan", Gender = "Kadın", Department = "HR", City = "İstanbul" },
-                new Employee { Id = 15, Name = "Mustafa Koç", Gender = "Erkek", Department = "Marketing", City = "Ankara" },
-                new Employee { Id = 16, Name = "Derya Polat", Gender = "Kadın", Department = "IT", City = "İzmir" },
-                new Employee { Id = 17, Name = "Tolga Gür", Gender = "Erkek", Department = "Finance", City = "Bursa" },
-                new Employee { Id = 18, Name = "Selin Özdemir", Gender = "Kadın", Department = "Sales", City = "Antalya" },
-                new Employee { Id = 19, Name = "Kerem Ak", Gender = "Erkek", Department = "HR", City = "İstanbul" },
-                new Employee { Id = 20, Name = "Buse Çetin", Gender = "Kadın", Department = "Marketing", City = "Ankara" },
-                new Employee { Id = 21, Name = "Hakan Eren", Gender = "Erkek", Department = "Finance", City = "İzmir" },
-                new Employee { Id = 22, Name = "Seda Kaplan", Gender = "Kadın", Department = "Sales", City = "Bursa" },
-                new Employee { Id = 23, Name = "Emre Tunç", Gender = "Erkek", Department = "IT", City = "Antalya" },
-                new Employee { Id = 24, Name = "Melisa Gül", Gender = "Kadın", Department = "HR", City = "İstanbul" },
-                new Employee { Id = 25, Name = "Onur Yıldız", Gender = "Erkek", Department = "Marketing", City = "Ankara" }
-            };
-
+        public static List<Employee> Employees = new List<Employee>
+        {
+            new Employee { Id = 1,  Name = "Alice Johnson",     Gender = "Female", Department = "HR",          City = "New York" },
+            new Employee { Id = 2,  Name = "Bob Smith",         Gender = "Male",   Department = "IT",          City = "Los Angeles" },
+            new Employee { Id = 3,  Name = "Charlie Davis",     Gender = "Male",   Department = "Finance",     City = "Chicago" },
+            new Employee { Id = 4,  Name = "Sara Taylor",       Gender = "Female", Department = "HR",          City = "Los Angeles" },
+            new Employee { Id = 5,  Name = "James Smith",       Gender = "Male",   Department = "IT",          City = "Chicago" },
+            new Employee { Id = 6,  Name = "Emma Williams",     Gender = "Female", Department = "Marketing",   City = "Boston" },
+            new Employee { Id = 7,  Name = "Michael Brown",     Gender = "Male",   Department = "Sales",       City = "Seattle" },
+            new Employee { Id = 8,  Name = "Olivia Miller",     Gender = "Female", Department = "Finance",     City = "New York" },
+            new Employee { Id = 9,  Name = "David Wilson",      Gender = "Male",   Department = "IT",          City = "San Francisco" },
+            new Employee { Id = 10, Name = "Sophia Anderson",   Gender = "Female", Department = "HR",          City = "Miami" },
+            new Employee { Id = 11, Name = "Ethan Thomas",      Gender = "Male",   Department = "Finance",     City = "Boston" },
+            new Employee { Id = 12, Name = "Isabella Jackson",  Gender = "Female", Department = "Marketing",   City = "Los Angeles" },
+            new Employee { Id = 13, Name = "Liam White",        Gender = "Male",   Department = "Sales",       City = "New York" },
+            new Employee { Id = 14, Name = "Mia Harris",        Gender = "Female", Department = "Finance",     City = "Seattle" },
+            new Employee { Id = 15, Name = "Noah Martin",       Gender = "Male",   Department = "IT",          City = "Chicago" },
+            new Employee { Id = 16, Name = "Ava Thompson",      Gender = "Female", Department = "Marketing",   City = "San Francisco" },
+            new Employee { Id = 17, Name = "William Garcia",    Gender = "Male",   Department = "Sales",       City = "Boston" },
+            new Employee { Id = 18, Name = "Charlotte Martinez",Gender = "Female", Department = "Finance",     City = "Los Angeles" },
+            new Employee { Id = 19, Name = "Benjamin Robinson", Gender = "Male",   Department = "HR",          City = "Miami" },
+            new Employee { Id = 20, Name = "Amelia Clark",      Gender = "Female", Department = "Marketing",   City = "New York" },
+            new Employee { Id = 21, Name = "Lucas Rodriguez",   Gender = "Male",   Department = "IT",          City = "Seattle" },
+            new Employee { Id = 22, Name = "Harper Lewis",      Gender = "Female", Department = "Sales",       City = "Chicago" },
+            new Employee { Id = 23, Name = "Elijah Lee",        Gender = "Male",   Department = "Finance",     City = "Boston" },
+            new Employee { Id = 24, Name = "Ella Walker",       Gender = "Female", Department = "HR",          City = "San Francisco" },
+            new Employee { Id = 25, Name = "Henry Hall",        Gender = "Male",   Department = "Marketing",   City = "New York" },
+        };
     }
 }
