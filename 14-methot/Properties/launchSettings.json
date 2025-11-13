@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "14-methot": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51652;http://localhost:51653"
+    }
+  }
+}

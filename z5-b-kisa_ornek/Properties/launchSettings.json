@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "z5-b-kisa_ornek": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51725;http://localhost:51726"
+    }
+  }
+}

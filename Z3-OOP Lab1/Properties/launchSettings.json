@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Z3-OOP Lab1": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51707;http://localhost:51708"
+    }
+  }
+}

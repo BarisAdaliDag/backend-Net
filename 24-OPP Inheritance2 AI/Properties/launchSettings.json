@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "24-OPP Inheritance2 AI": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51717;http://localhost:51718"
+    }
+  }
+}

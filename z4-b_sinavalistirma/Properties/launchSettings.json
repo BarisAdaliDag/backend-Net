@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "z4-b_sinavalistirma": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51723;http://localhost:51724"
+    }
+  }
+}

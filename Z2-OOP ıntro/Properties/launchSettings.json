@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Z2-OOP ıntro": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51699;http://localhost:51700"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "15-method2": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:51664;http://localhost:51665"
+    }
+  }
+}
